@@ -78,3 +78,10 @@ OpenStreetMap のデータを取り込む場合は、アプリ内に「© OpenSt
 
 - [D3.js](https://d3js.org/) 7.8.5、[TopoJSON Client](https://github.com/topojson/topojson-client) 3.0.2（cdnjs から読み込み）
 - フォント：Zen Kaku Gothic New、Zen Maru Gothic（Google Fonts）
+
+## 個性チャート
+- 各施設の `personality` に5項目（style / creatures / enjoy / audience / atmosphere）を 1〜5 で持つ。1＝左側の特徴が強い、3＝どちらともいえない、5＝右側の特徴が強い。`null`＝未評価（3 として扱わない）。
+- 項目名と左右の特徴は `meta.rules.personality_axes` に定義。
+- 初期データはすべて未評価（`null`）。訪問した人がアプリで設定する（`personality_basis` は `user`）。
+- アプリでの変更は訪問記録とは別の「施設の編集データ」に保存され、元データは変えない。
+- 旧版の★評価（訪問記録の `rating`）は削除せず保存したまま、画面には表示しない。

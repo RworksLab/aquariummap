@@ -93,7 +93,6 @@ label.f{display:grid;gap:6px;font-size:13px;color:var(--mute)}
 .entry .ph img{width:100%;height:100%;object-fit:cover}
 .entry .b{padding:14px 16px}
 .entry p{margin:6px 0 0;font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.stars{color:var(--star);letter-spacing:1px;font-size:14px;white-space:nowrap}
 .hero{padding:22px;display:flex;align-items:center;gap:20px}
 .ring{width:108px;height:108px;flex:none}
 .hero b{font-size:34px;font-family:"Zen Maru Gothic";color:var(--aqua-d);line-height:1}
@@ -122,7 +121,24 @@ dialog{border:0;padding:0;background:transparent;max-width:430px;width:100%;marg
 dialog::backdrop{background:rgb(10 40 48/.35)}
 dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom));max-height:92dvh;overflow:auto;display:grid;gap:14px}
 .grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
-.rate{display:flex;gap:4px}.rate button{width:44px;height:44px;font-size:26px;color:light-dark(#d6e3e6,#2c454b)}.rate button.on{color:var(--star)}
+/* 個性チャート：左右の特徴にはさまれた横長のインジケーター */
+.pc{padding:16px 18px 6px}.pc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.pc-row{padding:10px 0;border-bottom:1px solid var(--line)}.pc-row:last-of-type{border:0}
+.pc-name{font-size:12px;color:var(--mute);margin-bottom:6px}
+.pc-scale{display:grid;grid-template-columns:6.2em minmax(0,1fr) 6.2em;gap:8px;align-items:center;font-size:13px;white-space:nowrap}
+.pc-scale .l{text-align:left}.pc-scale .r{text-align:right}.pc-scale .on{color:var(--aqua-d);font-weight:700}
+.pc-track{position:relative;height:6px;border-radius:99px;background:var(--aqua-l)}
+.pc-track::before{content:"";position:absolute;left:50%;top:-3px;width:2px;height:12px;margin-left:-1px;border-radius:2px;background:var(--edge)}
+.pc-dot{position:absolute;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--aqua);border:3px solid var(--card);box-shadow:0 1px 4px rgb(23 58 66/.25)}
+.pc-none{position:absolute;inset:-8px 0;display:grid;place-items:center;font-size:11px;color:var(--mute);background:var(--card);margin:0 auto;width:4.5em;border-radius:99px}
+.pc-note{font-size:12px;color:var(--mute);margin:8px 0 10px}
+/* 個性チャートの編集：5段階の点＋未評価 */
+.pc-pick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:6px}
+.pc-pick button{height:40px;border-radius:12px;background:var(--aqua-l);display:grid;place-items:center}
+.pc-pick button i{width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--aqua)}
+.pc-pick button[aria-pressed=true]{background:var(--aqua)}.pc-pick button[aria-pressed=true] i{background:#fff;border-color:#fff}
+.pc-ends{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);margin-top:4px}
+.pc-clear{font-size:12px;color:var(--mute);min-height:32px;padding:0 4px}.pc-clear[aria-pressed=true]{color:var(--aqua-d);font-weight:700}
 .thumbs{display:flex;flex-wrap:wrap;gap:8px}.thumb{position:relative;width:76px;height:76px}.thumb img{width:100%;height:100%;object-fit:cover;border-radius:12px}
 .thumb button{position:absolute;right:-6px;top:-6px;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:14px;line-height:1}
 .addph{width:76px;height:76px;border-radius:12px;border:1.5px dashed var(--edge);display:grid;place-items:center;color:var(--aqua)}
@@ -209,7 +225,6 @@ dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px ca
   <dialog id="dlgVisit"><form class="in" id="visitForm">
     <h2 id="vTitle">訪問を記録</h2>
     <label class="f">訪問日<input type="date" name="date" required></label>
-    <div style="display:grid;gap:6px"><span class="muted">評価</span><div class="rate" id="rateIn"></div></div>
     <label class="f">感想<textarea name="memo" placeholder="印象に残った生きもの、展示など"></textarea></label>
     <div style="display:grid;gap:6px"><span class="muted">写真（3枚まで）</span><div class="thumbs" id="thumbs"></div><input type="file" id="photoIn" accept="image/*" multiple hidden></div>
     <div class="acts"><button type="button" class="btn ghost" id="vDelete" hidden>削除</button><button type="button" class="btn sub" id="vCancel">キャンセル</button><button class="btn" id="vSave">保存</button></div>
@@ -228,6 +243,13 @@ dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px ca
     <div class="acts"><button type="button" class="btn sub" id="editCancel">キャンセル</button><button class="btn">保存</button></div>
   </form></dialog>
 
+  <dialog id="dlgPc"><form class="in" id="pcForm">
+    <h2>個性チャートを編集</h2>
+    <p class="muted" style="margin:0">優劣ではなく、どちらの特徴に寄っているかを選びます。分からない項目は「未評価」のままにしてください。</p>
+    <div id="pcFields" style="display:grid;gap:16px"></div>
+    <div class="acts"><button type="button" class="btn sub" id="pcCancel">キャンセル</button><button class="btn">保存</button></div>
+  </form></dialog>
+
   <dialog id="dlgConfirm"><div class="in"><h3 id="cfText"></h3><div class="acts"><button class="btn sub" id="cfNo">やめる</button><button class="btn" id="cfOk" style="background:#d9584c">削除する</button></div></div></dialog>
   <div class="toast" id="toast" role="status"></div>
 </div>
@@ -242,7 +264,7 @@ const norm=s=>(s||'').normalize('NFKC').replace(/[\s・　（）()]/g,'');
 const ico=(n,st='')=>`<svg class="i" style="${st}"><use href="#i-${n}"/></svg>`;
 const markIco=n=>n?'<svg width="32" height="32" viewBox="0 0 30 30" aria-hidden="true"><use href="#stamp" width="30" height="30"/></svg>':ico('fish');
 const PREFS=["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"];
-let BASE=[],META={},geo=null,store=null,sel=null,detailId=null,editing=null,vEdit=null,vRating=0,vPhotos=[];
+let BASE=[],META={},geo=null,store=null,sel=null,detailId=null,editing=null,vEdit=null,pcEdit=null,vPhotos=[];
 const S={edits:{},visits:{},favorites:{},photos:{}};
 const ui={tab:'map',visit:'',fav:false};
 
@@ -262,7 +284,22 @@ const allVisits=()=>Object.entries(S.visits).map(([k,v])=>({key:k,...v})).sort((
 const photosOf=key=>Object.entries(S.photos).filter(([,p])=>p.visit_key===key).map(([k,p])=>({id:k,...p})).sort((a,b)=>(a.created_at||'').localeCompare(b.created_at||''));
 const isFav=id=>!!S.favorites[id],visited=id=>visitsOf(id).length>0;
 const L=()=>META.rules||{},catL=c=>(L().category_labels||{})[c]||c||'未分類',stL=s=>(L().status_labels||{})[s]||s;
-const stars=n=>n?'★'.repeat(n)+'<span style="opacity:.25">'+'★'.repeat(5-n)+'</span>':'';
+// 個性チャート：項目は施設データの meta.rules.personality_axes から読む（無い場合の既定値）
+const PC_AXES=[{key:'style',name:'展示スタイル',left:'展示重視',right:'体験重視'},{key:'creatures',name:'生き物の魅力',left:'種類豊富',right:'個性派'},
+  {key:'enjoy',name:'楽しみ方',left:'サクッと',right:'じっくり'},{key:'audience',name:'おすすめ対象',left:'家族向け',right:'デート向け'},{key:'atmosphere',name:'空間・雰囲気',left:'自然派',right:'演出派'}];
+const axes=()=>L().personality_axes||PC_AXES;
+const pcWord=(a,v)=>v==null?'未評価':v===3?'どちらともいえない':(v<3?(v===1?'':'やや')+a.left:(v===5?'':'やや')+a.right);
+function pcCard(f){
+  const p=f.personality||{},rated=axes().some(a=>p[a.key]!=null);
+  const rows=axes().map(a=>{const v=p[a.key];const ok=v>=1&&v<=5;
+    return `<div class="pc-row" role="img" aria-label="${esc(a.name)}：${esc(pcWord(a,ok?v:null))}"><div class="pc-name">${esc(a.name)}</div>
+      <div class="pc-scale" aria-hidden="true"><span class="l ${ok&&v<3?'on':''}">${esc(a.left)}</span>
+      <div class="pc-track">${ok?`<span class="pc-dot" style="left:${(v-1)*25}%"></span>`:'<span class="pc-none">未評価</span>'}</div>
+      <span class="r ${ok&&v>3?'on':''}">${esc(a.right)}</span></div></div>`}).join('');
+  const basis=f.personality_basis==='user'?'あなたが設定した個性です。':f.personality_basis==='draft'?'一般に知られている特徴から付けた目安です（公式情報での確認前）。':f.personality_basis==='official_checked'?'公式情報などをもとにした目安です。':'';
+  return `<div class="card pc"><div class="pc-head"><h3>個性チャート</h3><button class="btn ghost" id="dPc" style="min-height:36px;padding:0 6px">${ico('pen','width:16px;height:16px')}編集</button></div>
+    ${rated?rows:'<p class="muted" style="margin:4px 0 12px">未評価です。訪問したら「編集」から個性を記録できます。</p>'}${rated&&basis?`<p class="pc-note">${basis}</p>`:''}</div>`;
+}
 const fmtDate=d=>d?d.replace(/^(\d+)-0?(\d+)-0?(\d+)$/,'$1年$2月$3日'):'';
 const statusChip=f=>f.status==='closed'?'<span class="chip gray">閉館</span>':f.status==='temporarily_closed'?'<span class="chip warn">休館中</span>':'';
 
@@ -345,7 +382,7 @@ function renderLog(){
   $('#logSub').textContent=vs.length?`${n}施設・${vs.length}回の訪問`:'';
   $('#log').innerHTML=vs.length?vs.map(v=>{const f=fac(v.facility_id),ph=photosOf(v.key)[0];return `<button class="card entry" data-id="${esc(v.facility_id)}">
     <div class="ph">${ph?`<img src="${ph.data}" alt="" loading="lazy">`:ico('fish','width:34px;height:34px;opacity:.5')}</div>
-    <div class="b"><div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><h3>${esc(f?.name||v.facility_name)}</h3><span class="stars">${stars(v.rating)}</span></div>
+    <div class="b"><div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><h3>${esc(f?.name||v.facility_name)}</h3></div>
     <span class="muted">${fmtDate(v.date)}${f?'・'+esc(f.prefecture):''}</span>${v.memo?`<p>${esc(v.memo)}</p>`:''}</div></button>`}).join('')
     :`<div class="empty">${ico('book','width:40px;height:40px;opacity:.5')}<p>まだ訪問記録がありません。<br>施設の詳細画面から記録できます。</p></div>`;
 }
@@ -371,15 +408,16 @@ function renderDetail(){
   <div class="dhead"><span class="chip">${esc(catL(f.category))}</span> ${statusChip(f)}<h2>${esc(f.name)}</h2><span class="muted">${esc(f.prefecture)}</span></div>
   <div class="dbody">
     <div class="card info">
-      <div><span class="k">訪問状況</span><span class="v">${vs.length?`<strong style="color:var(--aqua-d)">訪問済み</strong>（${vs.length}回）<br><span class="muted">最終訪問 ${fmtDate(last.date)}</span>${last.rating?` <span class="stars">${stars(last.rating)}</span>`:''}`:'未訪問'}</span></div>
+      <div><span class="k">訪問状況</span><span class="v">${vs.length?`<strong style="color:var(--aqua-d)">訪問済み</strong>（${vs.length}回）<br><span class="muted">最終訪問 ${fmtDate(last.date)}</span>`:'未訪問'}</span></div>
       <div><span class="k">所在地</span><span class="v">${esc(f.address)||'—'}${f.lat==null?'<br><span class="muted">地図の位置は未登録です</span>':`<br><button class="btn ghost" id="dMap" style="min-height:36px;padding:0;color:var(--aqua-d)">${ico('pin','width:16px;height:16px')}地図で見る</button>`}</span></div>
       <div><span class="k">公式サイト</span><span class="v">${f.official_url?`<a href="${esc(f.official_url)}" target="_blank" rel="noopener">${esc(f.official_url.replace(/^https?:\/\//,'').replace(/\/$/,''))}</a>`:'—'}</span></div>
       ${f.status_note?`<div><span class="k">お知らせ</span><span class="v">${esc(f.status_note)}</span></div>`:''}
       ${f.closed_date?`<div><span class="k">閉館日</span><span class="v">${fmtDate(f.closed_date)}</span></div>`:''}
     </div>
+    ${pcCard(f)}
     ${closed?'<p class="note">閉館した施設のため、新しい訪問は記録できません。これまでの記録はそのまま残ります。</p>':`<button class="btn" id="dAdd">${ico('pen','width:18px;height:18px')}訪問を記録する</button>`}
     ${vs.length?`<div class="sec" style="margin:12px 0 0"><h3>訪問履歴</h3><span class="muted">${vs.length}件</span></div>`+vs.map(v=>{const ps=photosOf(v.key);return `<div class="card visit"><div class="row"><strong>${fmtDate(v.date)}</strong><button class="btn ghost" data-edit="${esc(v.key)}" style="min-height:36px;padding:0 6px">${ico('pen','width:16px;height:16px')}編集</button></div>
-      ${v.rating?`<div class="stars">${stars(v.rating)}</div>`:''}${v.memo?`<p style="margin:6px 0 0;font-size:14px">${esc(v.memo).replace(/\n/g,'<br>')}</p>`:''}
+      ${v.memo?`<p style="margin:6px 0 0;font-size:14px">${esc(v.memo).replace(/\n/g,'<br>')}</p>`:''}
       ${ps.length?`<div class="photos">${ps.map(p=>`<button data-photo="${esc(p.id)}" aria-label="写真を拡大"><img src="${p.data}" alt="訪問時の写真"></button>`).join('')}</div>`:''}</div>`}).join(''):''}
     <details class="card info" style="padding:14px 18px"><summary class="muted" style="cursor:pointer">施設データの詳細・編集</summary>
       <div><span class="k">分類</span><span class="v">${esc(catL(f.category))}</span></div>
@@ -391,7 +429,7 @@ function renderDetail(){
       <div style="border:0"><button class="btn sub" id="dEdit">${ico('pen','width:16px;height:16px')}施設情報を編集</button></div>
     </details>
   </div>`;
-  $('#dBack').onclick=closeDetail;const dm=$('#dMap');if(dm)dm.onclick=()=>showOnMap(f.id);$('#dEdit').onclick=()=>openEdit(f);
+  $('#dBack').onclick=closeDetail;$('#dPc').onclick=()=>openPc(f);const dm=$('#dMap');if(dm)dm.onclick=()=>showOnMap(f.id);$('#dEdit').onclick=()=>openEdit(f);
   $('#dFav').onclick=async()=>{await save('favorites',f.id,isFav(f.id)?null:{facility_id:f.id,created_at:new Date().toISOString()});refresh()};
   const a=$('#dAdd');if(a)a.onclick=()=>openVisit(f.id,null);
   $$('#detail [data-edit]').forEach(b=>b.onclick=()=>openVisit(f.id,b.dataset.edit));
@@ -400,8 +438,6 @@ function renderDetail(){
 $('#viewer').onclick=()=>$('#viewer').classList.remove('on');
 
 // 訪問の記録・編集（日付・評価・感想・写真）
-function drawRate(){$('#rateIn').innerHTML=[1,2,3,4,5].map(n=>`<button type="button" data-n="${n}" class="${n<=vRating?'on':''}" aria-label="${n}つ星">★</button>`).join('')}
-$('#rateIn').onclick=e=>{const b=e.target.closest('button');if(b){vRating=+b.dataset.n===vRating?0:+b.dataset.n;drawRate()}};
 function drawThumbs(){const live=vPhotos.filter(p=>!p.del);
   $('#thumbs').innerHTML=live.map(p=>`<div class="thumb"><img src="${p.data}" alt=""><button type="button" data-i="${vPhotos.indexOf(p)}" aria-label="写真を外す">×</button></div>`).join('')+(live.length<3?`<button type="button" class="addph" id="addPh" aria-label="写真を追加">${ico('camera')}</button>`:'');
   const ap=$('#addPh');if(ap)ap.onclick=()=>$('#photoIn').click();
@@ -411,16 +447,16 @@ function shrink(file){return new Promise((res,rej)=>{const img=new Image();img.o
   URL.revokeObjectURL(img.src);res(out)};img.onerror=rej;img.src=URL.createObjectURL(file)})}
 $('#photoIn').onchange=async e=>{for(const f of [...e.target.files]){if(vPhotos.filter(p=>!p.del).length>=3)break;try{vPhotos.push({data:await shrink(f)})}catch(err){toast('写真を読み込めませんでした')}}e.target.value='';drawThumbs()};
 function openVisit(fid,key){
-  const v=key?S.visits[key]:null;vEdit={fid,key};vRating=v?.rating||0;vPhotos=key?photosOf(key).map(p=>({id:p.id,data:p.data})):[];
+  const v=key?S.visits[key]:null;vEdit={fid,key};vPhotos=key?photosOf(key).map(p=>({id:p.id,data:p.data})):[];
   $('#vTitle').textContent=key?'訪問記録を編集':'訪問を記録';const fm=$('#visitForm');fm.date.value=v?.date||new Date().toISOString().slice(0,10);fm.memo.value=v?.memo||'';
-  $('#vDelete').hidden=!key;drawRate();drawThumbs();$('#dlgVisit').showModal();
+  $('#vDelete').hidden=!key;drawThumbs();$('#dlgVisit').showModal();
 }
 $('#vCancel').onclick=()=>$('#dlgVisit').close();
 $('#visitForm').onsubmit=async e=>{
   e.preventDefault();const {fid,key}=vEdit,f=fac(fid),fm=e.target;
   if(!key&&f.status==='closed')return toast('閉館施設には新しい記録を追加できません');
   const k2=key||'v'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),prev=key?S.visits[key]:{};
-  const rec={...prev,facility_id:fid,facility_name:prev.facility_name||f.name,date:fm.date.value,memo:fm.memo.value.trim(),rating:vRating||null,created_at:prev.created_at||new Date().toISOString(),...(key?{updated_at:new Date().toISOString()}:{})};
+  const rec={...prev,facility_id:fid,facility_name:prev.facility_name||f.name,date:fm.date.value,memo:fm.memo.value.trim(),created_at:prev.created_at||new Date().toISOString(),...(key?{updated_at:new Date().toISOString()}:{})};
   $('#vSave').disabled=true;
   if(await save('visits',k2,rec)){
     for(const p of vPhotos){if(p.del)await save('photos',p.id,null);else if(!p.id)await save('photos','p'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),{visit_key:k2,facility_id:fid,data:p.data,created_at:new Date().toISOString()})}
@@ -431,6 +467,20 @@ $('#visitForm').onsubmit=async e=>{
 $('#vDelete').onclick=()=>{const {key}=vEdit;$('#cfText').textContent='この訪問記録と写真を削除しますか？元に戻せません。';$('#dlgConfirm').showModal();
   $('#cfOk').onclick=async()=>{$('#dlgConfirm').close();if(await save('visits',key,null)){for(const p of photosOf(key))await save('photos',p.id,null);$('#dlgVisit').close();refresh()}}};
 $('#cfNo').onclick=()=>$('#dlgConfirm').close();
+
+// 個性チャートの編集（施設の編集データ edits に personality として保存。元データは変えない）
+function drawPcFields(){$('#pcFields').innerHTML=axes().map(a=>{const v=pcEdit.vals[a.key];
+  return `<div><div style="display:flex;justify-content:space-between;align-items:center"><strong style="font-size:14px">${esc(a.name)}</strong><button type="button" class="pc-clear" data-k="${a.key}" data-v="" aria-pressed="${v==null}">未評価</button></div>
+    <div class="pc-pick" role="group" aria-label="${esc(a.name)}">${[1,2,3,4,5].map(n=>`<button type="button" data-k="${a.key}" data-v="${n}" aria-pressed="${v===n}" aria-label="${esc(pcWord(a,n))}"><i></i></button>`).join('')}</div>
+    <div class="pc-ends"><span>${esc(a.left)}</span><span>${esc(a.right)}</span></div></div>`}).join('')}
+function openPc(f){pcEdit={id:f.id,vals:{...(f.personality||{})}};drawPcFields();$('#dlgPc').showModal()}
+$('#pcFields').onclick=e=>{const b=e.target.closest('button[data-k]');if(!b)return;pcEdit.vals[b.dataset.k]=b.dataset.v?+b.dataset.v:null;drawPcFields()};
+$('#pcCancel').onclick=()=>$('#dlgPc').close();
+$('#pcForm').onsubmit=async e=>{e.preventDefault();
+  const vals=Object.fromEntries(axes().map(a=>[a.key,pcEdit.vals[a.key]>=1&&pcEdit.vals[a.key]<=5?pcEdit.vals[a.key]:null]));
+  const any=Object.values(vals).some(v=>v!=null);
+  const rec={...(S.edits[pcEdit.id]||{}),personality:any?vals:null,personality_basis:any?'user':null,personality_edited_at:new Date().toISOString()};
+  if(await save('edits',pcEdit.id,rec)){$('#dlgPc').close();toast('個性チャートを保存しました');refresh()}};
 
 // 施設の追加・編集（重複チェック・閉館処理は従来どおり）
 function openEdit(f){
@@ -452,7 +502,7 @@ $('#editForm').addEventListener('submit',async e=>{
   const rec={name:val('name'),prefecture:pref,prefecture_code:code,category:val('category'),address:val('address'),lat,lng,
     coord_source:lat!=null?(same?prev.coord_source??'manual':'manual'):null,coord_note:lat!=null?(same?prev.coord_note??null:'アプリで手入力'):'未登録（後で補完）',
     official_url:val('official_url'),status:st,closed_date:st==='closed'?val('closed_date'):null,notes:val('notes'),edited_at:new Date().toISOString(),is_user_added:!BASE.some(b=>b.id===id)};
-  if(await save('edits',id,rec)){$('#dlgEdit').close();toast('保存しました');refresh();if(!editing)openDetail(id)}
+  if(await save('edits',id,{...(S.edits[id]||{}),...rec})){$('#dlgEdit').close();toast('保存しました');refresh();if(!editing)openDetail(id)}
 });
 
 async function copy(t,m){try{await navigator.clipboard.writeText(t);toast(m)}catch(e){toast('コピーできませんでした')}}

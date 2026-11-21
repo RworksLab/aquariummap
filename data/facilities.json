@@ -126,7 +126,50 @@
         "official_checked": "公式・公的情報で個別確認済み",
         "listed": "施設一覧への掲載のみ（個別確認前）"
       },
-      "category_note": "関東以外の分類は名称と掲載情報からの暫定分類"
+      "category_note": "関東以外の分類は名称と掲載情報からの暫定分類",
+      "personality_axes": [
+        {
+          "key": "style",
+          "name": "展示スタイル",
+          "left": "展示重視",
+          "right": "体験重視"
+        },
+        {
+          "key": "creatures",
+          "name": "生き物の魅力",
+          "left": "種類豊富",
+          "right": "個性派"
+        },
+        {
+          "key": "enjoy",
+          "name": "楽しみ方",
+          "left": "サクッと",
+          "right": "じっくり"
+        },
+        {
+          "key": "audience",
+          "name": "おすすめ対象",
+          "left": "家族向け",
+          "right": "デート向け"
+        },
+        {
+          "key": "atmosphere",
+          "name": "空間・雰囲気",
+          "left": "自然派",
+          "right": "演出派"
+        }
+      ],
+      "personality_scale": {
+        "1": "左側の特徴が強い",
+        "2": "やや左側",
+        "3": "どちらともいえない",
+        "4": "やや右側",
+        "5": "右側の特徴が強い",
+        "null": "未評価"
+      },
+      "personality_basis_labels": {
+        "user": "アプリで訪問者が設定した値"
+      }
     },
     "warnings": [],
     "count_by_verification": {
@@ -179,7 +222,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0002",
@@ -224,7 +269,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0003",
@@ -264,7 +311,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0004",
@@ -310,7 +359,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0005",
@@ -348,7 +399,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0006",
@@ -396,7 +449,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0007",
@@ -444,7 +499,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0008",
@@ -476,7 +533,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0009",
@@ -523,7 +582,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0010",
@@ -555,7 +616,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0011",
@@ -602,7 +665,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0012",
@@ -642,7 +707,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0013",
@@ -687,7 +754,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0014",
@@ -732,7 +801,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0015",
@@ -777,7 +848,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-01-0016",
@@ -817,7 +890,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-02-0001",
@@ -862,7 +937,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-02-0002",
@@ -902,7 +979,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-03-0001",
@@ -949,7 +1028,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-04-0001",
@@ -994,7 +1075,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-04-0002",
@@ -1039,7 +1122,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-04-0003",
@@ -1081,7 +1166,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-05-0001",
@@ -1128,7 +1215,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-05-0002",
@@ -1160,7 +1249,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-06-0001",
@@ -1205,7 +1296,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-07-0001",
@@ -1250,7 +1343,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-07-0002",
@@ -1295,7 +1390,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-08-0001",
@@ -1328,7 +1425,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-08-0002",
@@ -1369,7 +1468,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "wikidata": "Q21652750",
-      "verification": "official_checked"
+      "verification": "official_checked",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-09-0001",
@@ -1417,7 +1518,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "wikidata": "Q11535182",
-      "verification": "official_checked"
+      "verification": "official_checked",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-09-0002",
@@ -1451,7 +1554,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-10-0001",
@@ -1484,7 +1589,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-10-0002",
@@ -1517,7 +1624,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-11-0001",
@@ -1557,7 +1666,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-12-0001",
@@ -1597,7 +1708,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-12-0002",
@@ -1630,7 +1743,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-12-0003",
@@ -1671,7 +1786,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "wikidata": "Q85875396",
-      "verification": "official_checked"
+      "verification": "official_checked",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-13-0001",
@@ -1711,7 +1828,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-13-0002",
@@ -1753,7 +1872,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-13-0003",
@@ -1786,7 +1907,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-13-0004",
@@ -1821,7 +1944,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-13-0005",
@@ -1854,7 +1979,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-13-0006",
@@ -1887,7 +2014,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-13-0007",
@@ -1920,7 +2049,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-13-0008",
@@ -1960,7 +2091,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-13-0009",
@@ -1999,7 +2132,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-13-0010",
@@ -2039,7 +2174,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-14-0001",
@@ -2079,7 +2216,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-14-0002",
@@ -2112,7 +2251,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-14-0003",
@@ -2160,7 +2301,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "wikidata": "Q97169050",
-      "verification": "official_checked"
+      "verification": "official_checked",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-14-0004",
@@ -2202,7 +2345,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "wikidata": "Q11582155",
-      "verification": "official_checked"
+      "verification": "official_checked",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-14-0005",
@@ -2242,7 +2387,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "verification": "official_checked",
-      "wikidata": null
+      "wikidata": null,
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-14-0006",
@@ -2290,7 +2437,9 @@
       "registered_at": "2026-11-21",
       "verified_at": "2026-11-21",
       "wikidata": "Q114355208",
-      "verification": "official_checked"
+      "verification": "official_checked",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-15-0001",
@@ -2336,7 +2485,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-15-0002",
@@ -2382,7 +2533,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-15-0003",
@@ -2427,7 +2580,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-15-0004",
@@ -2465,7 +2620,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-15-0005",
@@ -2503,7 +2660,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-16-0001",
@@ -2548,7 +2707,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-16-0002",
@@ -2580,7 +2741,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-16-0003",
@@ -2612,7 +2775,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-17-0001",
@@ -2659,7 +2824,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-17-0002",
@@ -2699,7 +2866,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-18-0001",
@@ -2744,7 +2913,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-18-0002",
@@ -2784,7 +2955,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-18-0003",
@@ -2824,7 +2997,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-18-0004",
@@ -2856,7 +3031,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-18-0005",
@@ -2889,7 +3066,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-19-0001",
@@ -2936,7 +3115,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-20-0001",
@@ -2981,7 +3162,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-21-0001",
@@ -3026,7 +3209,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-22-0001",
@@ -3064,7 +3249,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-22-0002",
@@ -3104,7 +3291,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-22-0003",
@@ -3149,7 +3338,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-22-0004",
@@ -3194,7 +3385,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-22-0005",
@@ -3234,7 +3427,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-22-0006",
@@ -3279,7 +3474,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-22-0007",
@@ -3319,7 +3516,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-22-0008",
@@ -3352,7 +3551,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-23-0001",
@@ -3391,7 +3592,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-23-0002",
@@ -3436,7 +3639,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-23-0003",
@@ -3483,7 +3688,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-23-0004",
@@ -3528,7 +3735,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-23-0005",
@@ -3574,7 +3783,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-23-0006",
@@ -3619,7 +3830,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-23-0007",
@@ -3664,7 +3877,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-23-0008",
@@ -3701,7 +3916,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-24-0001",
@@ -3740,7 +3957,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-24-0002",
@@ -3789,7 +4008,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-24-0003",
@@ -3831,7 +4052,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-24-0004",
@@ -3877,7 +4100,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-25-0001",
@@ -3916,7 +4141,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-25-0002",
@@ -3962,7 +4189,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-25-0003",
@@ -3995,7 +4224,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-26-0001",
@@ -4040,7 +4271,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-26-0002",
@@ -4073,7 +4306,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-27-0001",
@@ -4118,7 +4353,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-27-0002",
@@ -4165,7 +4402,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-27-0003",
@@ -4197,7 +4436,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-27-0004",
@@ -4242,7 +4483,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-27-0005",
@@ -4275,7 +4518,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-28-0001",
@@ -4315,7 +4560,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-28-0002",
@@ -4360,7 +4607,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-28-0003",
@@ -4406,7 +4655,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-28-0004",
@@ -4452,7 +4703,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-28-0005",
@@ -4498,7 +4751,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-28-0006",
@@ -4543,7 +4798,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-28-0007",
@@ -4588,7 +4845,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-30-0001",
@@ -4633,7 +4892,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-30-0002",
@@ -4678,7 +4939,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-30-0003",
@@ -4718,7 +4981,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-30-0004",
@@ -4758,7 +5023,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-30-0005",
@@ -4803,7 +5070,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-30-0006",
@@ -4848,7 +5117,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-30-0007",
@@ -4893,7 +5164,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-31-0001",
@@ -4938,7 +5211,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-32-0001",
@@ -4984,7 +5259,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-32-0002",
@@ -5029,7 +5306,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-32-0003",
@@ -5061,7 +5340,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-33-0001",
@@ -5093,7 +5374,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-33-0002",
@@ -5138,7 +5421,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-33-0003",
@@ -5170,7 +5455,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-33-0004",
@@ -5210,7 +5497,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-34-0001",
@@ -5255,7 +5544,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-34-0002",
@@ -5300,7 +5591,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-34-0003",
@@ -5346,7 +5639,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-34-0004",
@@ -5386,7 +5681,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-35-0001",
@@ -5431,7 +5728,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-35-0002",
@@ -5476,7 +5775,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-36-0001",
@@ -5516,7 +5817,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-36-0002",
@@ -5556,7 +5859,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-37-0001",
@@ -5601,7 +5906,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-37-0002",
@@ -5646,7 +5953,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-37-0003",
@@ -5686,7 +5995,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-38-0001",
@@ -5733,7 +6044,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-39-0001",
@@ -5778,7 +6091,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-39-0002",
@@ -5818,7 +6133,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-39-0003",
@@ -5858,7 +6175,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-39-0004",
@@ -5903,7 +6222,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-39-0005",
@@ -5949,7 +6270,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-40-0001",
@@ -5989,7 +6312,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-40-0002",
@@ -6034,7 +6359,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-42-0001",
@@ -6079,7 +6406,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-42-0002",
@@ -6119,7 +6448,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-42-0003",
@@ -6159,7 +6490,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-43-0001",
@@ -6205,7 +6538,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-44-0001",
@@ -6251,7 +6586,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-44-0002",
@@ -6296,7 +6633,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-44-0003",
@@ -6336,7 +6675,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-45-0001",
@@ -6376,7 +6717,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-45-0002",
@@ -6415,7 +6758,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-45-0003",
@@ -6455,7 +6800,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-45-0004",
@@ -6494,7 +6841,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-46-0001",
@@ -6540,7 +6889,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-46-0002",
@@ -6580,7 +6931,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-47-0001",
@@ -6625,7 +6978,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-47-0002",
@@ -6657,7 +7012,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     },
     {
       "id": "aq-47-0003",
@@ -6702,7 +7059,9 @@
       ],
       "registered_at": "2026-11-21",
       "verified_at": null,
-      "verification": "listed"
+      "verification": "listed",
+      "personality": null,
+      "personality_basis": null
     }
   ]
 }

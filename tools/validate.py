@@ -34,6 +34,13 @@ def main(path="data/facilities.json"):
         if f.get("category") not in cats: errs.append(f"{fid}: 分類が不正 ({f.get('category')})")
         if f.get("status") not in stats: errs.append(f"{fid}: 営業状況が不正 ({f.get('status')})")
         if f.get("status") != "closed" and f.get("closed_date"): warns.append(f"{fid}: 営業中なのに閉館日がある")
+        pc = f.get("personality")
+        if pc is not None:
+            keys = {a["key"] for a in meta["rules"].get("personality_axes", [])}
+            if not isinstance(pc, dict) or set(pc) - keys:
+                errs.append(f"{fid}: personality の項目が不正")
+            elif any(v is not None and v not in (1, 2, 3, 4, 5) for v in pc.values()):
+                errs.append(f"{fid}: personality の値は 1〜5 か null")
         lat, lng = f.get("lat"), f.get("lng")
         if (lat is None) != (lng is None): errs.append(f"{fid}: 緯度・経度の片方だけ")
         elif lat is not None and not (20 < lat < 46 and 122 < lng < 154): errs.append(f"{fid}: 座標が日本の範囲外")
