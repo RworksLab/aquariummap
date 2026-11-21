@@ -193,7 +193,7 @@ dialog .in input::-webkit-date-and-time-value{text-align:left}
     <div class="top"><h1>水族館訪問マップ</h1><span class="count" id="mapCount"></span></div>
     <div class="mapbox" id="mapbox"><svg class="m" id="map" role="img" aria-label="水族館の位置を示す日本地図"></svg></div>
     <div class="mapctl"><button class="icon-btn" id="zin" aria-label="拡大"><svg class="i"><use href="#i-plus"/></svg></button><button class="icon-btn" id="zout" aria-label="縮小"><svg class="i"><use href="#i-minus"/></svg></button><button class="icon-btn" id="zfit" aria-label="全体を表示"><svg class="i"><use href="#i-full"/></svg></button></div>
-    <div class="legend" id="legend"><span><svg width="18" height="18" viewBox="0 0 30 30" aria-hidden="true" style="vertical-align:-5px;margin-right:4px"><use href="#stamp" width="30" height="30"/></svg>訪問済み</span><span><i style="background:#fff;border:1.5px solid var(--aqua)"></i>未訪問</span><span><i style="background:#c5cfd2"></i>閉館</span><span><i style="background:var(--land-v);border-radius:3px"></i>訪問した県</span></div>
+    <div class="legend" id="legend"><span><svg width="18" height="18" viewBox="0 0 30 30" aria-hidden="true" style="vertical-align:-5px;margin-right:4px"><use href="#stamp" width="30" height="30"/></svg>訪問済み</span><span><i style="background:#fff;border:1.5px solid var(--aqua)"></i>未訪問</span><span><i style="background:#c5cfd2"></i>閉館</span><span><i style="background:conic-gradient(#8a87da 0 25%,#3daa43 0 50%,#f2c200 0 75%,#ff6663 0);border-radius:3px"></i>訪問した県</span></div>
     <div class="peek card" id="peek" role="button" tabindex="0"></div>
   </section>
 
@@ -359,7 +359,10 @@ function styleDots(){landG.selectAll('path').attr('stroke-width',.7/k);
 // 水族館に1か所でも訪問した都道府県に色をつける（閉館した施設の記録も含む）
 function paintPrefs(){const byId=new Map(facilities().map(f=>[f.id,f.prefecture]));
   const done=new Set(Object.values(S.visits).map(v=>byId.get(v.facility_id)).filter(Boolean));
-  landG.selectAll('path').attr('fill',d=>done.has(d.properties.nam_ja)?'var(--land-v)':'var(--land)')}
+  landG.selectAll('path').attr('fill',d=>done.has(d.properties.nam_ja)?regionColor(+d.properties.id):'var(--land)')}
+// 地方ごとの色（都道府県コードで判定）
+const REGION_COLORS=[[1,1,'#8a87da'],[2,7,'#63a0ea'],[8,14,'#3daa43'],[15,23,'#9ac934'],[24,30,'#f2c200'],[31,35,'#fb9c00'],[36,39,'#f9a0a8'],[40,47,'#ff6663']];
+const regionColor=c=>(REGION_COLORS.find(([a,b])=>c>=a&&c<=b)||[0,0,'var(--land-v)'])[2];
 function drawPins(){
   if(!geo)return;paintPrefs();
   const kind=d=>d.status==='closed'?'closed':visited(d.id)?'stamp':'dot';
