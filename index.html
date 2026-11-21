@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#2a9fb3">
-<meta name="app-version" content="2026112102">
+<meta name="app-version" content="2026112104">
 <meta name="apple-mobile-web-app-title" content="水族館マップ">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
@@ -103,8 +103,13 @@ label.f{display:grid;gap:6px;font-size:13px;color:var(--mute)}
 .pref:last-child{border:0}.bar{height:8px;border-radius:99px;background:var(--aqua-l);overflow:hidden}.bar i{display:block;height:100%;background:var(--aqua);border-radius:99px}
 .sec{margin:26px 0 10px;display:flex;justify-content:space-between;align-items:baseline}
 .set{padding:4px 18px}.set>div{padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}.set>div:last-child{border:0}
-.sheet{position:absolute;inset:0;background:var(--bg);z-index:30;overflow-y:auto;overflow-x:hidden;transform:translateY(100%);transition:transform .3s ease;padding-bottom:40px;visibility:hidden}
+.sheet{position:absolute;inset:0 0 calc(var(--nav) + env(safe-area-inset-bottom));background:var(--bg);z-index:30;overflow-y:auto;overflow-x:hidden;transform:translateY(100%);transition:transform .3s ease;padding-bottom:40px;visibility:hidden}
 .sheet.on{transform:none;visibility:visible}
+/* 詳細画面：右下に固定する「訪問を記録」ボタン */
+.sheet.on:has(~#fabSlot .fab){padding-bottom:150px}
+.fab{position:absolute;right:18px;bottom:calc(var(--nav) + 18px + env(safe-area-inset-bottom));z-index:35;width:108px;height:108px;border-radius:50%;background:var(--aqua);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-size:14px;font-weight:700;letter-spacing:.02em;box-shadow:0 8px 20px rgb(27 127 144/.35)}
+.fab:active{transform:scale(.95)}
+.app:has(.upd:not([hidden])) .fab{bottom:calc(var(--nav) + 90px + env(safe-area-inset-bottom))}
 .sheet .bar-top{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;padding:calc(12px + env(safe-area-inset-top)) 14px 10px;background:linear-gradient(var(--bg) 70%,transparent)}
 .dhead{padding:4px 22px 18px}
 .dhead h2{font-size:24px;margin:8px 0 6px}
@@ -219,6 +224,7 @@ dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px ca
   </section>
 
   <div class="sheet" id="detail" role="dialog" aria-modal="true" aria-label="施設詳細"></div>
+  <div id="fabSlot"></div>
   <div class="viewer" id="viewer"><img alt="写真"></div>
 
   <nav class="tabs" aria-label="メイン">
@@ -313,7 +319,7 @@ const statusChip=f=>f.status==='closed'?'<span class="chip gray">閉館</span>':
 // タブ
 function go(tab){ui.tab=tab;$$('.screen').forEach(s=>s.classList.toggle('on',s.id==='s-'+tab));$$('nav.tabs button').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===tab?'page':'false'));
   if(location.hash!=='#'+tab)history.replaceState(null,'','#'+tab);closeDetail();if(tab==='map')requestAnimationFrame(drawMap);refresh()}
-$$('nav.tabs button').forEach(b=>b.onclick=()=>go(b.dataset.tab));
+$$('nav.tabs button').forEach(b=>b.onclick=()=>{if(detailId)closeDetail();go(b.dataset.tab)});
 addEventListener('hashchange',()=>{const t=location.hash.slice(1);if(['map','list','log','me'].includes(t)&&t!==ui.tab)go(t)});
 
 // マップ
@@ -407,7 +413,7 @@ function renderMe(){
 
 // 施設詳細
 function openDetail(id){detailId=id;renderDetail();$('#detail').classList.add('on');$('#detail').scrollTop=0}
-function closeDetail(){detailId=null;$('#detail').classList.remove('on')}
+function closeDetail(){detailId=null;$('#detail').classList.remove('on');$('#fabSlot').innerHTML=''}
 function renderDetail(){
   const f=detailId&&fac(detailId);if(!f)return;const vs=visitsOf(f.id),closed=f.status==='closed',last=vs[0];
   const src=(f.sources||[]).map(s=>{const u=s.url||META.sources?.[s.ref]?.url;if(!u)return'';let h=u;try{h=s.ref?META.sources[s.ref].name:new URL(u).hostname}catch(e){}return `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(h)}</a>`}).join('<br>');
@@ -422,7 +428,7 @@ function renderDetail(){
       ${f.closed_date?`<div><span class="k">閉館日</span><span class="v">${fmtDate(f.closed_date)}</span></div>`:''}
     </div>
     ${pcCard(f)}
-    ${closed?'<p class="note">閉館した施設のため、新しい訪問は記録できません。これまでの記録はそのまま残ります。</p>':`<button class="btn" id="dAdd">${ico('pen','width:18px;height:18px')}訪問を記録する</button>`}
+    ${closed?'<p class="note">閉館した施設のため、新しい訪問は記録できません。これまでの記録はそのまま残ります。</p>':''}
     ${vs.length?`<div class="sec" style="margin:12px 0 0"><h3>訪問履歴</h3><span class="muted">${vs.length}件</span></div>`+vs.map(v=>{const ps=photosOf(v.key);return `<div class="card visit"><div class="row"><strong>${fmtDate(v.date)}</strong><button class="btn ghost" data-edit="${esc(v.key)}" style="min-height:36px;padding:0 6px">${ico('pen','width:16px;height:16px')}編集</button></div>
       ${v.memo?`<p style="margin:6px 0 0;font-size:14px">${esc(v.memo).replace(/\n/g,'<br>')}</p>`:''}
       ${ps.length?`<div class="photos">${ps.map(p=>`<button data-photo="${esc(p.id)}" aria-label="写真を拡大"><img src="${p.data}" alt="訪問時の写真"></button>`).join('')}</div>`:''}</div>`}).join(''):''}
@@ -436,6 +442,7 @@ function renderDetail(){
       <div style="border:0"><button class="btn sub" id="dEdit">${ico('pen','width:16px;height:16px')}施設情報を編集</button></div>
     </details>
   </div>`;
+  $('#fabSlot').innerHTML=closed?'':`<button class="fab" id="dAdd">${ico('pen','width:32px;height:32px')}<span>訪問を記録</span></button>`;
   $('#dBack').onclick=closeDetail;$('#dPc').onclick=()=>openPc(f);const dm=$('#dMap');if(dm)dm.onclick=()=>showOnMap(f.id);$('#dEdit').onclick=()=>openEdit(f);
   $('#dFav').onclick=async()=>{await save('favorites',f.id,isFav(f.id)?null:{facility_id:f.id,created_at:new Date().toISOString()});refresh()};
   const a=$('#dAdd');if(a)a.onclick=()=>openVisit(f.id,null);
