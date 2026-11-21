@@ -55,6 +55,10 @@ def main(path="data/facilities.json"):
             if dist < 200: warns.append(f"200m 以内に別の施設: {a['name']} / {b['name']}（{dist:.0f}m）")
     if meta.get("total") != len(facs): warns.append(f"meta.total ({meta.get('total')}) と件数 ({len(facs)}) が違う")
     json.load(open("data/pending.json", encoding="utf-8"))
+    m = re.search(r'name="app-version" content="(\d+)"', open("index.html", encoding="utf-8").read())
+    ver = json.load(open("version.json", encoding="utf-8")).get("version")
+    if not m or m.group(1) != ver:
+        errs.append(f"index.html の版 ({m and m.group(1)}) と version.json の版 ({ver}) が違う")
     print(f"施設 {len(facs)} 件・座標あり {len(pts)} 件・エラー {len(errs)} 件・警告 {len(warns)} 件")
     for m in errs: print("エラー:", m)
     for m in warns: print("警告:", m)

@@ -8,6 +8,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#2a9fb3">
+<meta name="app-version" content="2026112102">
 <meta name="apple-mobile-web-app-title" content="水族館マップ">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
@@ -146,6 +147,11 @@ dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px ca
 .viewer{position:absolute;inset:0;background:rgb(0 0 0/.9);z-index:40;display:none;place-items:center}.viewer.on{display:grid}.viewer img{max-width:100%;max-height:100%}
 .toast{position:absolute;left:50%;bottom:calc(var(--nav) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50;white-space:nowrap}
 .toast.on{opacity:1}
+/* アップデートのお知らせ */
+.upd{position:absolute;left:12px;right:12px;bottom:calc(var(--nav) + 12px);z-index:60;display:flex;align-items:center;gap:10px;padding:10px 10px 10px 16px;border-radius:18px;background:var(--card);border:1px solid var(--line);box-shadow:0 6px 20px rgb(23 58 66/.16);font-size:14px}
+.upd p{flex:1;margin:0;min-width:0}.upd p small{display:block;color:var(--mute);font-size:12px}
+.upd .btn{min-height:40px;padding:0 18px}.upd .x{width:36px;height:36px;display:grid;place-items:center;color:var(--mute);font-size:18px}
+.app:has(.upd:not([hidden])) .toast{bottom:calc(var(--nav) + 92px)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -252,6 +258,7 @@ dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px ca
 
   <dialog id="dlgConfirm"><div class="in"><h3 id="cfText"></h3><div class="acts"><button class="btn sub" id="cfNo">やめる</button><button class="btn" id="cfOk" style="background:#d9584c">削除する</button></div></div></dialog>
   <div class="toast" id="toast" role="status"></div>
+  <div class="upd" id="upd" role="status" hidden><p><strong>アップデートがあります</strong><small>記録はそのまま残ります</small></p><button class="btn" id="updGo">更新</button><button class="x" id="updX" aria-label="あとで">×</button></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -516,6 +523,14 @@ $('#loadIn').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!
   try{const d=JSON.parse(await f.text());if(d.app!=='aquarium-visit-map')throw 0;let n=0;
     for(const c of Object.keys(S))for(const[id,v]of Object.entries(d[c]||{}))if(!S[c][id]&&v&&typeof v==='object'){if(await save(c,id,v))n++}
     toast(`${n}件の記録を追加しました`);refresh()}catch(err){toast('このファイルは読み込めません')}};
+// アップデート確認：公開中の version.json とこの画面の版を比べ、新しければお知らせを出す
+const APP_VER=document.querySelector('meta[name=app-version]').content;let updSkip=null;
+async function checkUpdate(){try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const v=await r.json();
+  if(+v.version>+APP_VER&&v.version!==updSkip){$('#upd').dataset.v=v.version;$('#upd').hidden=false}}catch(e){}}
+$('#updGo').onclick=()=>{location.replace(location.pathname+'?v='+$('#upd').dataset.v+location.hash)};
+$('#updX').onclick=()=>{updSkip=$('#upd').dataset.v;$('#upd').hidden=true};
+setTimeout(checkUpdate,2000);setInterval(checkUpdate,30*60*1000);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkUpdate()});
 let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2600)}
 
 function refresh(){
@@ -524,7 +539,7 @@ function refresh(){
   if(ui.tab==='map'){drawPins();peek()}if(ui.tab==='list')renderList();if(ui.tab==='log')renderLog();if(ui.tab==='me')renderMe();if(detailId)renderDetail();
 }
 
-Promise.all([fetch('data/facilities.json').then(r=>r.json()),fetch('data/japan-prefectures.topo.json').then(r=>r.json())]).then(([d,topo])=>{
+Promise.all([fetch('data/facilities.json?v='+APP_VER,{cache:'no-cache'}).then(r=>r.json()),fetch('data/japan-prefectures.topo.json?v='+APP_VER).then(r=>r.json())]).then(([d,topo])=>{
   BASE=d.facilities;META=d.meta;geo=topojson.feature(topo,topo.objects.prefectures);
   const opt=o=>Object.entries(o||{}).map(([k,v])=>`<option value="${esc(k)}">${esc(v)}</option>`).join('');
   const used=PREFS.filter(p=>BASE.some(f=>f.prefecture===p));
