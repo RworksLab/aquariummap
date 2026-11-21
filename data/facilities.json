@@ -1,0 +1,6708 @@
+{
+  "meta": {
+    "dataset": "水族館訪問マップ 施設データ（全国版 初期データ）",
+    "version": "0.2.0",
+    "generated_at": "2026-11-21",
+    "region": "全国",
+    "total": 158,
+    "count_by_status": {
+      "営業中": 156,
+      "休館中": 2
+    },
+    "count_by_prefecture": {
+      "北海道": 16,
+      "青森県": 2,
+      "岩手県": 1,
+      "宮城県": 3,
+      "秋田県": 2,
+      "山形県": 1,
+      "福島県": 2,
+      "茨城県": 2,
+      "栃木県": 2,
+      "群馬県": 2,
+      "埼玉県": 1,
+      "千葉県": 3,
+      "東京都": 10,
+      "神奈川県": 6,
+      "新潟県": 5,
+      "富山県": 3,
+      "石川県": 2,
+      "福井県": 5,
+      "山梨県": 1,
+      "長野県": 1,
+      "岐阜県": 1,
+      "静岡県": 8,
+      "愛知県": 8,
+      "三重県": 4,
+      "滋賀県": 3,
+      "京都府": 2,
+      "大阪府": 5,
+      "兵庫県": 7,
+      "和歌山県": 7,
+      "鳥取県": 1,
+      "島根県": 3,
+      "岡山県": 4,
+      "広島県": 4,
+      "山口県": 2,
+      "徳島県": 2,
+      "香川県": 3,
+      "愛媛県": 1,
+      "高知県": 5,
+      "福岡県": 2,
+      "長崎県": 3,
+      "熊本県": 1,
+      "大分県": 3,
+      "宮崎県": 4,
+      "鹿児島県": 2,
+      "沖縄県": 3
+    },
+    "count_by_category": {
+      "一般的な水族館": 65,
+      "小規模水族館": 23,
+      "海洋生物展示施設": 14,
+      "淡水魚水族館": 22,
+      "動物園・施設内の水族館": 9,
+      "水生生物の学習展示施設": 25
+    },
+    "with_coordinates": 103,
+    "without_coordinates": 55,
+    "sources": {
+      "jaza": {
+        "name": "日本動物園水族館協会 正会員名簿【水族館】（令和8年7月13日現在）",
+        "url": "https://www.jaza.jp/about-jaza/structure/list-aquarium",
+        "accessed": "2026-11-21"
+      },
+      "wikipedia": {
+        "name": "Wikipedia「日本の水族館一覧」（候補抽出のみに使用）",
+        "url": "https://ja.wikipedia.org/wiki/日本の水族館一覧",
+        "accessed": "2026-11-21"
+      },
+      "gsi": {
+        "name": "国土地理院 住所検索API（座標取得）",
+        "url": "https://msearch.gsi.go.jp/address-search/AddressSearch",
+        "accessed": "2026-11-21"
+      },
+      "aquarium_map": {
+        "name": "水族館マップ（aquarium-map.com）全国の水族館一覧（144館）",
+        "url": "https://aquarium-map.com/aquariums",
+        "accessed": "2026-11-21",
+        "use": "収録候補の施設名・都道府県のみ参照。座標・説明文・画像は複製していない"
+      },
+      "manboumuseum": {
+        "name": "マンボウなんでも博物館「日本の水族館マップ」",
+        "url": "https://manboumuseum.com/japanese-aquarium-map/",
+        "accessed": "2026-11-21",
+        "use": "収録候補の施設名・都道府県・公式サイトへのリンクのみ参照。地図データは複製していない"
+      },
+      "wikidata": {
+        "name": "Wikidata（SPARQL一括取得: 日本の公共水族館）",
+        "url": "https://query.wikidata.org/",
+        "accessed": "2026-11-21",
+        "license": "CC0 1.0",
+        "use": "座標・公式サイト・住所"
+      }
+    },
+    "rules": {
+      "included": "実在が公式サイト・公的機関・都県観光公式サイト等で確認できた施設のみ",
+      "empty_fields": "確認できない項目は null（空欄）",
+      "coordinates": "確認済み住所を国土地理院住所検索で変換。番地・号・街区まで一致、または公式住所全体と一致した場合のみ採用。それ以外は null",
+      "closed_policy": "登録後に閉館した施設は削除せず status=closed に変更し、closed_date を記録する",
+      "category_labels": {
+        "general_aquarium": "一般的な水族館",
+        "small_aquarium": "小規模水族館",
+        "freshwater_aquarium": "淡水魚水族館",
+        "in_facility": "動物園・施設内の水族館",
+        "marine_exhibit": "海洋生物展示施設",
+        "learning_exhibit": "水生生物の学習展示施設"
+      },
+      "status_labels": {
+        "operating": "営業中",
+        "temporarily_closed": "休館中",
+        "closed": "閉館",
+        "unknown": "不明"
+      },
+      "inclusion": "現在の施設一覧（aquarium-map.com／マンボウなんでも博物館）の少なくとも一方に掲載され、収録基準に合うもの。関東25件は公式情報で個別確認済み",
+      "verification_labels": {
+        "official_checked": "公式・公的情報で個別確認済み",
+        "listed": "施設一覧への掲載のみ（個別確認前）"
+      },
+      "category_note": "関東以外の分類は名称と掲載情報からの暫定分類"
+    },
+    "warnings": [],
+    "count_by_verification": {
+      "listed": 133,
+      "official_checked": 25
+    },
+    "license_notes": [
+      "Wikidata 由来の項目は CC0 のため自由に利用可能。",
+      "aquarium-map.com の施設データは © OpenStreetMap contributors（ODbL）と表示されているため、同サイトのデータそのものは複製せず施設名の確認にのみ利用した。",
+      "マンボウなんでも博物館は利用条件の明示がないため、施設名・都道府県（事実情報）とリンク先URLのみ参照した。",
+      "OpenStreetMap（ODbL）は、この作業環境から Overpass API に接続できず未使用。利用する場合は「© OpenStreetMap contributors」の表示と、配布時の ODbL 継承が必要。"
+    ]
+  },
+  "facilities": [
+    {
+      "id": "aq-01-0001",
+      "name": "AOAO SAPPORO",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "general_aquarium",
+      "official_url": "https://aoao-sapporo.blue/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0002",
+      "name": "おたる水族館",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": 43.236806,
+      "lng": 141.01125,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://otaru-aq.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11261729",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0003",
+      "name": "くしろ水族館ぷくぷく",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://www.sennosuke.net/pukupuku/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0004",
+      "name": "オホーツクとっかりセンター",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": 44.333583,
+      "lng": 143.373528,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "marine_exhibit",
+      "official_url": "https://o-tower.co.jp/okhotsktower.html",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "アザラシの保護・展示施設。マンボウなんでも博物館の一覧では氷海展望塔オホーツクタワーと併記",
+      "wikidata": "Q11292366",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0005",
+      "name": "サケのふるさと 千歳水族館",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": 42.832722,
+      "lng": 141.659167,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://chitose-aq.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11405627",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0006",
+      "name": "サンピアザ水族館",
+      "aliases": [
+        "新さっぽろサンピアザ水族館"
+      ],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": "札幌市厚別区厚別中央2条5丁目7-5",
+      "lat": 43.036944444,
+      "lng": 141.471666666,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.sunpiazza-aquarium.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11305917",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0007",
+      "name": "わっかりうむ ノシャップ寒流水族館",
+      "aliases": [
+        "稚内市立ノシャップ寒流水族館",
+        "ノシャップ寒流水族館"
+      ],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": 45.449333333,
+      "lng": 141.644916666,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.city.wakkanai.hokkaido.jp/suizokukan/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11596319",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0008",
+      "name": "札幌市円山動物園",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "in_facility",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "札幌市円山動物園",
+      "notes": "動物園内の水生生物展示",
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0009",
+      "name": "北の大地の水族館（山の水族館）",
+      "aliases": [
+        "おんねゆ温泉 北の大地の水族館"
+      ],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": 43.754278,
+      "lng": 143.500278,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://onneyu-aq.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11465797",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0010",
+      "name": "千歳さけますの森 さけます情報館",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0011",
+      "name": "室蘭民報みんなの水族館（市立室蘭水族館）",
+      "aliases": [
+        "市立室蘭水族館"
+      ],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": 42.33975,
+      "lng": 140.94375,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "http://www.iburi.net/murosui/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11480658",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0012",
+      "name": "旭川市旭山動物園",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "in_facility",
+      "official_url": "https://www.city.asahikawa.hokkaido.jp/asahiyamazoo/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "旭川市旭山動物園",
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0013",
+      "name": "札幌市豊平川さけ科学館",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": 43.00111111,
+      "lng": 141.34333333,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "learning_exhibit",
+      "official_url": "https://salmon-museum.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11521425",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0014",
+      "name": "標津サーモン科学館",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": 43.660083,
+      "lng": 145.116139,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "learning_exhibit",
+      "official_url": "http://s-salmon.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11542208",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0015",
+      "name": "登別マリンパークニクス",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": 42.454972,
+      "lng": 141.182194,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.nixe.co.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11579106",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-01-0016",
+      "name": "美深チョウザメ館",
+      "aliases": [],
+      "prefecture": "北海道",
+      "prefecture_code": "01",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": "https://www.bifuka-kankou.com/attractions/tyozamekan/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-02-0001",
+      "name": "青森県営浅虫水族館",
+      "aliases": [],
+      "prefecture": "青森県",
+      "prefecture_code": "02",
+      "address": null,
+      "lat": 40.897583,
+      "lng": 140.862778,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "http://asamushi-aqua.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q4803495",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-02-0002",
+      "name": "八戸市水産科学館マリエント",
+      "aliases": [],
+      "prefecture": "青森県",
+      "prefecture_code": "02",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": "http://www.marient.org/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-03-0001",
+      "name": "もぐらんぴあ水族館",
+      "aliases": [
+        "久慈地下水族科学館 もぐらんぴあ"
+      ],
+      "prefecture": "岩手県",
+      "prefecture_code": "03",
+      "address": null,
+      "lat": 40.221289,
+      "lng": 141.815722,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "small_aquarium",
+      "official_url": "https://www.moguranpia.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11279914",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-04-0001",
+      "name": "アクアテラス錦ケ丘",
+      "aliases": [],
+      "prefecture": "宮城県",
+      "prefecture_code": "04",
+      "address": null,
+      "lat": 38.25711111,
+      "lng": 140.76505556,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "small_aquarium",
+      "official_url": "https://aquaterrace.co.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q21652335",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-04-0002",
+      "name": "仙台うみの杜水族館",
+      "aliases": [],
+      "prefecture": "宮城県",
+      "prefecture_code": "04",
+      "address": null,
+      "lat": 38.27108333,
+      "lng": 140.98066667,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.uminomori.jp/umino/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q17222417",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-04-0003",
+      "name": "伊豆沼・内沼サンクチュアリセンター 淡水魚館",
+      "aliases": [
+        "登米市伊豆沼・内沼サンクチュアリセンター"
+      ],
+      "prefecture": "宮城県",
+      "prefecture_code": "04",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": "http://izunuma.org/1_3.html",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-05-0001",
+      "name": "男鹿水族館GAO",
+      "aliases": [
+        "秋田県立男鹿水族館"
+      ],
+      "prefecture": "秋田県",
+      "prefecture_code": "05",
+      "address": null,
+      "lat": 39.942167,
+      "lng": 139.704583,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.gao-aqua.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11595485",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-05-0002",
+      "name": "田沢湖クニマス未来館",
+      "aliases": [],
+      "prefecture": "秋田県",
+      "prefecture_code": "05",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-06-0001",
+      "name": "鶴岡市立加茂水族館",
+      "aliases": [],
+      "prefecture": "山形県",
+      "prefecture_code": "06",
+      "address": null,
+      "lat": 38.762222,
+      "lng": 139.724972,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://kamo-kurage.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11675955",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-07-0001",
+      "name": "アクアマリンふくしま",
+      "aliases": [],
+      "prefecture": "福島県",
+      "prefecture_code": "07",
+      "address": null,
+      "lat": 36.94275,
+      "lng": 140.9015,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.aquamarine.or.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q4782699",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-07-0002",
+      "name": "アクアマリンいなわしろカワセミ水族館",
+      "aliases": [],
+      "prefecture": "福島県",
+      "prefecture_code": "07",
+      "address": null,
+      "lat": 37.56138889,
+      "lng": 140.07458333,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://www.aquamarine.or.jp/kawasemi/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q38266933",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-08-0001",
+      "name": "アクアワールド茨城県大洗水族館",
+      "aliases": [],
+      "prefecture": "茨城県",
+      "prefecture_code": "08",
+      "address": "茨城県東茨城郡大洗町磯浜町8252-3",
+      "lat": 36.3241,
+      "lng": 140.588028,
+      "coord_source": "gsi_geocode",
+      "coord_note": "番地一致",
+      "category": "general_aquarium",
+      "official_url": "https://www.aquaworld-oarai.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://www.aquaworld-oarai.com/information/about/",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-08-0002",
+      "name": "かすみがうら市水族館",
+      "aliases": [],
+      "prefecture": "茨城県",
+      "prefecture_code": "08",
+      "address": "茨城県かすみがうら市坂910-1",
+      "lat": 36.07159389,
+      "lng": 140.37600694,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://www.dane-kerry.com/aquarium.html",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "歩崎公園内",
+      "sources": [
+        {
+          "url": "https://www.pref.ibaraki.jp/soshiki/seikatsukankyo/kasumigauraesc/05_gakushu/kojyouschool/documents/2021_10kasumigaurasshisuizokukan.pdf",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "lng",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "wikidata": "Q21652750",
+      "verification": "official_checked"
+    },
+    {
+      "id": "aq-09-0001",
+      "name": "栃木県なかがわ水遊園",
+      "aliases": [],
+      "prefecture": "栃木県",
+      "prefecture_code": "09",
+      "address": "栃木県大田原市佐良土2686",
+      "lat": 36.789139,
+      "lng": 140.128694,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://tnap.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://tnap.jp/park/access.php",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "jaza",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "lng",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "wikidata": "Q11535182",
+      "verification": "official_checked"
+    },
+    {
+      "id": "aq-09-0002",
+      "name": "さかなと森の観察園",
+      "aliases": [],
+      "prefecture": "栃木県",
+      "prefecture_code": "09",
+      "address": "栃木県日光市中宮祠2482-3",
+      "lat": 36.728291,
+      "lng": 139.493256,
+      "coord_source": "gsi_geocode",
+      "coord_note": "番地一致",
+      "category": "learning_exhibit",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "水産研究・教育機構の広報施設。冬期休園（営業期間3/20〜11/30）",
+      "sources": [
+        {
+          "url": "https://www.gltjp.com/ja/directory/item/15052/",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address",
+            "status"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-10-0001",
+      "name": "水産学習館（道の駅みなかみ水紀行館）",
+      "aliases": [],
+      "prefecture": "群馬県",
+      "prefecture_code": "10",
+      "address": "群馬県利根郡みなかみ町湯原1681-1",
+      "lat": 36.765873,
+      "lng": 138.969696,
+      "coord_source": "gsi_geocode",
+      "coord_note": "番地一致",
+      "category": "freshwater_aquarium",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "道の駅みなかみ水紀行館",
+      "notes": "道の駅内だが、トンネル水槽などを備えた独立した淡水魚の展示館のため収録（要確認）",
+      "sources": [
+        {
+          "url": "https://rurubu.jp/andmore/spot/80008328",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-10-0002",
+      "name": "桐生が岡動物園 水族館",
+      "aliases": [],
+      "prefecture": "群馬県",
+      "prefecture_code": "10",
+      "address": "群馬県桐生市宮本町3-8-13",
+      "lat": 36.419548,
+      "lng": 139.33992,
+      "coord_source": "gsi_geocode",
+      "coord_note": "号まで一致",
+      "category": "in_facility",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "桐生が岡動物園",
+      "notes": "座標は動物園の代表住所",
+      "sources": [
+        {
+          "url": "https://www.city.kiryu.lg.jp/_res/projects/default_project/_page_/001/005/753/no.37.pdf",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-11-0001",
+      "name": "さいたま水族館",
+      "aliases": [],
+      "prefecture": "埼玉県",
+      "prefecture_code": "11",
+      "address": "埼玉県羽生市三田ヶ谷751-1",
+      "lat": 36.173141,
+      "lng": 139.598053,
+      "coord_source": "gsi_geocode",
+      "coord_note": "番地一致",
+      "category": "freshwater_aquarium",
+      "official_url": "https://www.parks.or.jp/suizokukan/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "羽生水郷公園内",
+      "sources": [
+        {
+          "url": "https://www.parks.or.jp/suizokukan/",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "jaza",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-12-0001",
+      "name": "鴨川シーワールド",
+      "aliases": [],
+      "prefecture": "千葉県",
+      "prefecture_code": "12",
+      "address": "千葉県鴨川市東町1464-18",
+      "lat": 35.117218,
+      "lng": 140.122452,
+      "coord_source": "gsi_geocode",
+      "coord_note": "番地一致",
+      "category": "general_aquarium",
+      "official_url": "https://www.kamogawa-seaworld.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://www.kamogawa-seaworld.jp/access/",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "jaza",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-12-0002",
+      "name": "かつうら海中公園 海中展望塔",
+      "aliases": [],
+      "prefecture": "千葉県",
+      "prefecture_code": "12",
+      "address": "千葉県勝浦市吉尾174",
+      "lat": 35.136028,
+      "lng": 140.286545,
+      "coord_source": "gsi_geocode",
+      "coord_note": "番地一致",
+      "category": "marine_exhibit",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "海中の自然の魚を観察する展望塔",
+      "sources": [
+        {
+          "url": "https://rurubu.jp/andmore/spot/80009740",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-12-0003",
+      "name": "世界一ちっちゃな水族館",
+      "aliases": [],
+      "prefecture": "千葉県",
+      "prefecture_code": "12",
+      "address": "千葉県銚子市潮見町15-9",
+      "lat": 35.707111111,
+      "lng": 140.840416666,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "small_aquarium",
+      "official_url": "https://choshi-aquarium.jimdofree.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "銚子海洋研究所",
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://maruchiba.jp/spot/detail_11255.html",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "lng",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "wikidata": "Q85875396",
+      "verification": "official_checked"
+    },
+    {
+      "id": "aq-13-0001",
+      "name": "サンシャイン水族館",
+      "aliases": [],
+      "prefecture": "東京都",
+      "prefecture_code": "13",
+      "address": "東京都豊島区東池袋3-1-3 サンシャインシティ ワールドインポートマートビル屋上",
+      "lat": 35.727844,
+      "lng": 139.719986,
+      "coord_source": "gsi_geocode",
+      "coord_note": "号まで一致",
+      "category": "general_aquarium",
+      "official_url": "https://sunshinecity.jp/aquarium/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://sunshinecity.jp/aquarium/access/",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "url": "https://sunshinecity.jp/aquarium/legal.html",
+          "accessed": "2026-11-21",
+          "fields": [
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-13-0002",
+      "name": "東京都葛西臨海水族園",
+      "aliases": [
+        "葛西臨海水族園"
+      ],
+      "prefecture": "東京都",
+      "prefecture_code": "13",
+      "address": "東京都江戸川区臨海町6-2-3",
+      "lat": 35.640774,
+      "lng": 139.855331,
+      "coord_source": "gsi_geocode",
+      "coord_note": "街区まで一致",
+      "category": "general_aquarium",
+      "official_url": "https://www.tokyo-zoo.net/zoo/kasai/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "葛西臨海公園内。園内で新水族園を建設中",
+      "sources": [
+        {
+          "url": "https://www.tokyo-zoo.net/zoo/kasai/directions.html",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "jaza",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-13-0003",
+      "name": "しながわ水族館",
+      "aliases": [],
+      "prefecture": "東京都",
+      "prefecture_code": "13",
+      "address": "東京都品川区勝島3-2-1",
+      "lat": 35.588001,
+      "lng": 139.736954,
+      "coord_source": "gsi_geocode",
+      "coord_note": "号まで一致",
+      "category": "general_aquarium",
+      "official_url": "https://www.aquarium.gr.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "しながわ区民公園内",
+      "sources": [
+        {
+          "url": "https://www.aquarium.gr.jp/outline",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-13-0004",
+      "name": "マクセル アクアパーク品川",
+      "aliases": [
+        "アクアパーク品川"
+      ],
+      "prefecture": "東京都",
+      "prefecture_code": "13",
+      "address": "東京都港区高輪4-10-30（品川プリンスホテル内）",
+      "lat": 35.628574,
+      "lng": 139.736984,
+      "coord_source": "gsi_geocode",
+      "coord_note": "街区まで一致",
+      "category": "general_aquarium",
+      "official_url": "https://www.aqua-park.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://www.aqua-park.jp/aqua/access/index.html",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-13-0005",
+      "name": "すみだ水族館",
+      "aliases": [],
+      "prefecture": "東京都",
+      "prefecture_code": "13",
+      "address": "東京都墨田区押上1-1-2 東京スカイツリータウン・ソラマチ5F・6F",
+      "lat": 35.710083,
+      "lng": 139.808609,
+      "coord_source": "gsi_geocode",
+      "coord_note": "号まで一致",
+      "category": "general_aquarium",
+      "official_url": "https://www.sumida-aquarium.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://www.sumida-aquarium.com/about/access/",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-13-0006",
+      "name": "井の頭自然文化園 水生物館",
+      "aliases": [],
+      "prefecture": "東京都",
+      "prefecture_code": "13",
+      "address": "東京都武蔵野市御殿山1-17-6",
+      "lat": 35.700573,
+      "lng": 139.573074,
+      "coord_source": "gsi_geocode",
+      "coord_note": "号まで一致",
+      "category": "in_facility",
+      "official_url": "https://www.tokyo-zoo.net/inokashira/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "井の頭自然文化園",
+      "notes": "淡水生物の水族館。水生物館は分園にあり、座標は園の代表住所（本園）",
+      "sources": [
+        {
+          "url": "https://www.tokyo-zoo.net/inokashira/exhibits/aquatic-life-house/index.html",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-13-0007",
+      "name": "足立区生物園",
+      "aliases": [],
+      "prefecture": "東京都",
+      "prefecture_code": "13",
+      "address": "東京都足立区保木間2-17-1",
+      "lat": 35.793121,
+      "lng": 139.806992,
+      "coord_source": "gsi_geocode",
+      "coord_note": "街区まで一致",
+      "category": "in_facility",
+      "official_url": "https://seibutuen.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "昆虫・魚類などを展示する生物園。元渕江公園内",
+      "sources": [
+        {
+          "url": "https://seibutuen.jp/guidance/information.html",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-13-0008",
+      "name": "板橋区立熱帯環境植物館 ミニ水族館",
+      "aliases": [],
+      "prefecture": "東京都",
+      "prefecture_code": "13",
+      "address": "東京都板橋区高島平8-29-2",
+      "lat": 35.791729,
+      "lng": 139.664566,
+      "coord_source": "gsi_geocode",
+      "coord_note": "号まで一致",
+      "category": "in_facility",
+      "official_url": "https://www.seibu-la.co.jp/nettaikan/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "板橋区立熱帯環境植物館",
+      "notes": "地下1階のミニ水族館（約150種）",
+      "sources": [
+        {
+          "url": "https://www.seibu-la.co.jp/nettaikan/facility.html",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "url": "https://www.city.itabashi.tokyo.jp/kusei/chosha/1043016/1042967/1043209.html",
+          "accessed": "2026-11-21",
+          "fields": [
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-13-0009",
+      "name": "小笠原海洋センター",
+      "aliases": [],
+      "prefecture": "東京都",
+      "prefecture_code": "13",
+      "address": "東京都小笠原村父島字屏風谷",
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "村・島名までしか一致せず空欄",
+      "category": "marine_exhibit",
+      "official_url": "https://bonin-ocean.net/",
+      "status": "temporarily_closed",
+      "status_note": "改修工事のため2026年8月〜2027年3月末まで休館（公式発表）",
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "ウミガメの展示・保全施設",
+      "sources": [
+        {
+          "url": "https://bonin-ocean.net/archives/18161",
+          "accessed": "2026-11-21",
+          "fields": [
+            "status"
+          ]
+        },
+        {
+          "url": "https://bonin-ocean.net/recruitment-guide-of-volunteer",
+          "accessed": "2026-11-21",
+          "fields": [
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-13-0010",
+      "name": "小笠原水産センター 小さな水族館",
+      "aliases": [],
+      "prefecture": "東京都",
+      "prefecture_code": "13",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://www.soumu.metro.tokyo.lg.jp/07ogasawara/fish/aquarium.html",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "東京都小笠原水産センター",
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-14-0001",
+      "name": "横浜・八景島シーパラダイス",
+      "aliases": [],
+      "prefecture": "神奈川県",
+      "prefecture_code": "14",
+      "address": "神奈川県横浜市金沢区八景島",
+      "lat": 35.336521,
+      "lng": 139.644135,
+      "coord_source": "gsi_geocode",
+      "coord_note": "公式住所全体と一致（番地なし）",
+      "category": "general_aquarium",
+      "official_url": "https://www.seaparadise.co.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://www.seaparadise.co.jp/contact/index.html",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "jaza",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-14-0002",
+      "name": "新江ノ島水族館",
+      "aliases": [],
+      "prefecture": "神奈川県",
+      "prefecture_code": "14",
+      "address": "神奈川県藤沢市片瀬海岸2-19-1",
+      "lat": 35.310005,
+      "lng": 139.479889,
+      "coord_source": "gsi_geocode",
+      "coord_note": "号まで一致",
+      "category": "general_aquarium",
+      "official_url": "https://www.enosui.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://www.enosui.com/contact.php",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-14-0003",
+      "name": "カワスイ 川崎水族館",
+      "aliases": [],
+      "prefecture": "神奈川県",
+      "prefecture_code": "14",
+      "address": "神奈川県川崎市川崎区日進町1-11 川崎ルフロン9・10階",
+      "lat": 35.529611111,
+      "lng": 139.696305555,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://kawa-sui.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://kawa-sui.com/",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "jaza",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "lng",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "wikidata": "Q97169050",
+      "verification": "official_checked"
+    },
+    {
+      "id": "aq-14-0004",
+      "name": "相模川ふれあい科学館 アクアリウムさがみはら",
+      "aliases": [],
+      "prefecture": "神奈川県",
+      "prefecture_code": "14",
+      "address": "神奈川県相模原市中央区水郷田名1-5-1",
+      "lat": 35.547417,
+      "lng": 139.328889,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://sagamigawa-fureai.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://www.pref.kanagawa.jp/docs/bs5/cnt/f4898/p14371.html",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address",
+            "official_url"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "lng",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "wikidata": "Q11582155",
+      "verification": "official_checked"
+    },
+    {
+      "id": "aq-14-0005",
+      "name": "箱根園水族館",
+      "aliases": [],
+      "prefecture": "神奈川県",
+      "prefecture_code": "14",
+      "address": "神奈川県足柄下郡箱根町元箱根139",
+      "lat": 35.211807,
+      "lng": 139.009964,
+      "coord_source": "gsi_geocode",
+      "coord_note": "番地一致（一致表記: 神奈川県箱根町元箱根１３９番地）",
+      "category": "general_aquarium",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "箱根園",
+      "notes": null,
+      "sources": [
+        {
+          "url": "https://kanagawa-kankou.or.jp/spot/311",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "gsi",
+          "fields": [
+            "lat",
+            "lng"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "verification": "official_checked",
+      "wikidata": null
+    },
+    {
+      "id": "aq-14-0006",
+      "name": "横浜開運水族館 フォーチュンアクアリウム",
+      "aliases": [],
+      "prefecture": "神奈川県",
+      "prefecture_code": "14",
+      "address": "神奈川県横浜市中区山下町144 チャイナスクエア3F",
+      "lat": 35.442642,
+      "lng": 139.644714,
+      "coord_source": "gsi_geocode",
+      "coord_note": "番地一致（一致表記: 神奈川県横浜市中区山下町１４４番地）",
+      "category": "small_aquarium",
+      "official_url": "https://fortune-aquarium.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "横浜中華街内",
+      "sources": [
+        {
+          "url": "https://kanagawa-kankou.or.jp/spot/7382",
+          "accessed": "2026-11-21",
+          "fields": [
+            "name",
+            "address"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "lng",
+            "official_url"
+          ]
+        },
+        {
+          "ref": "gsi",
+          "fields": [
+            "lat",
+            "lng"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": "2026-11-21",
+      "wikidata": "Q114355208",
+      "verification": "official_checked"
+    },
+    {
+      "id": "aq-15-0001",
+      "name": "上越市立水族博物館 うみがたり",
+      "aliases": [],
+      "prefecture": "新潟県",
+      "prefecture_code": "15",
+      "address": "新潟県上越市五智2-15-15",
+      "lat": 37.1735,
+      "lng": 138.23297222,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.umigatari.jp/joetsu/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11360163",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-15-0002",
+      "name": "新潟市水族館 マリンピア日本海",
+      "aliases": [],
+      "prefecture": "新潟県",
+      "prefecture_code": "15",
+      "address": "新潟県新潟市中央区西船見町5932-445",
+      "lat": 37.923633333,
+      "lng": 139.027975,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.marinepia.or.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11502898",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-15-0003",
+      "name": "長岡市寺泊水族博物館",
+      "aliases": [],
+      "prefecture": "新潟県",
+      "prefecture_code": "15",
+      "address": null,
+      "lat": 37.633888888,
+      "lng": 138.760277777,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://aquarium-teradomari.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q61722200",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-15-0004",
+      "name": "イヨボヤ会館",
+      "aliases": [],
+      "prefecture": "新潟県",
+      "prefecture_code": "15",
+      "address": null,
+      "lat": 38.227777777,
+      "lng": 139.471388888,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "learning_exhibit",
+      "official_url": "https://www.iyoboya.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "サケの博物館",
+      "wikidata": "Q61721910",
+      "sources": [
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-15-0005",
+      "name": "小千谷市錦鯉の里",
+      "aliases": [],
+      "prefecture": "新潟県",
+      "prefecture_code": "15",
+      "address": null,
+      "lat": 37.311111111,
+      "lng": 138.795277777,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "learning_exhibit",
+      "official_url": "https://www.nishikigoinosato.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "錦鯉の展示施設",
+      "wikidata": "Q11650572",
+      "sources": [
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-16-0001",
+      "name": "魚津水族館",
+      "aliases": [],
+      "prefecture": "富山県",
+      "prefecture_code": "16",
+      "address": null,
+      "lat": 36.798389,
+      "lng": 137.38815,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.uozu-aquarium.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11674044",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-16-0002",
+      "name": "ほたるいかミュージアム",
+      "aliases": [],
+      "prefecture": "富山県",
+      "prefecture_code": "16",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-16-0003",
+      "name": "ひみラボ水族館",
+      "aliases": [],
+      "prefecture": "富山県",
+      "prefecture_code": "16",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-17-0001",
+      "name": "のとじま水族館",
+      "aliases": [
+        "のとじま臨海公園水族館"
+      ],
+      "prefecture": "石川県",
+      "prefecture_code": "17",
+      "address": null,
+      "lat": 37.14916667,
+      "lng": 136.98222222,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.notoaqua.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11275197",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-17-0002",
+      "name": "のと海洋ふれあいセンター",
+      "aliases": [],
+      "prefecture": "石川県",
+      "prefecture_code": "17",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": "http://notomarine.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-18-0001",
+      "name": "越前松島水族館",
+      "aliases": [],
+      "prefecture": "福井県",
+      "prefecture_code": "18",
+      "address": null,
+      "lat": 36.253055,
+      "lng": 136.147192,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.echizen-aquarium.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11636428",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-18-0002",
+      "name": "福井県海浜自然センター",
+      "aliases": [],
+      "prefecture": "福井県",
+      "prefecture_code": "18",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": "https://fcnc.pref.fukui.lg.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-18-0003",
+      "name": "越前がにミュージアム",
+      "aliases": [],
+      "prefecture": "福井県",
+      "prefecture_code": "18",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": "https://www.town-echizen.jp/spot/spot05Detail.php?id=339",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-18-0004",
+      "name": "くにみクラゲ公民館",
+      "aliases": [],
+      "prefecture": "福井県",
+      "prefecture_code": "18",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-18-0005",
+      "name": "おばま水族館",
+      "aliases": [],
+      "prefecture": "福井県",
+      "prefecture_code": "18",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://obama-aquarium.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-19-0001",
+      "name": "森の中の水族館。（山梨県立富士湧水の里水族館）",
+      "aliases": [
+        "山梨県立富士湧水の里水族館"
+      ],
+      "prefecture": "山梨県",
+      "prefecture_code": "19",
+      "address": null,
+      "lat": 35.45554444,
+      "lng": 138.82392778,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "http://www.morinonakano-suizokukan.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11469706",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-20-0001",
+      "name": "蓼科アミューズメント水族館",
+      "aliases": [],
+      "prefecture": "長野県",
+      "prefecture_code": "20",
+      "address": null,
+      "lat": 36.066572,
+      "lng": 138.302764,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://www.tateshina-aquarium.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11621781",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-21-0001",
+      "name": "世界淡水魚園水族館 アクア・トト ぎふ",
+      "aliases": [],
+      "prefecture": "岐阜県",
+      "prefecture_code": "21",
+      "address": null,
+      "lat": 35.371722,
+      "lng": 136.810472,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://aquatotto.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11282869",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-22-0001",
+      "name": "あわしまマリンパーク",
+      "aliases": [],
+      "prefecture": "静岡県",
+      "prefecture_code": "22",
+      "address": null,
+      "lat": 35.033555555,
+      "lng": 138.89,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "http://marinepark.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q83789636",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-22-0002",
+      "name": "SMART AQUARiUM SHIZUOKA（スマートアクアリウム静岡）",
+      "aliases": [],
+      "prefecture": "静岡県",
+      "prefecture_code": "22",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://smartaqua-sz.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-22-0003",
+      "name": "下田海中水族館",
+      "aliases": [],
+      "prefecture": "静岡県",
+      "prefecture_code": "22",
+      "address": null,
+      "lat": 34.66605556,
+      "lng": 138.94597222,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://shimoda-aquarium.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11361202",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-22-0004",
+      "name": "伊豆・三津シーパラダイス",
+      "aliases": [],
+      "prefecture": "静岡県",
+      "prefecture_code": "22",
+      "address": null,
+      "lat": 35.019444,
+      "lng": 138.895944,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.mitosea.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q3156501",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-22-0005",
+      "name": "幼魚水族館",
+      "aliases": [],
+      "prefecture": "静岡県",
+      "prefecture_code": "22",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://yo-sui.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-22-0006",
+      "name": "沼津港深海水族館",
+      "aliases": [],
+      "prefecture": "静岡県",
+      "prefecture_code": "22",
+      "address": null,
+      "lat": 35.083972,
+      "lng": 138.858167,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "http://www.numazu-deepsea.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11554537",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-22-0007",
+      "name": "浜名湖体験学習施設 ウォット",
+      "aliases": [],
+      "prefecture": "静岡県",
+      "prefecture_code": "22",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": "https://ulotto.entetsuassist-dms.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-22-0008",
+      "name": "ドルフィンファンタジー伊東",
+      "aliases": [],
+      "prefecture": "静岡県",
+      "prefecture_code": "22",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "marine_exhibit",
+      "official_url": "http://dolphin-fantasy.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-23-0001",
+      "name": "赤塚山公園 ぎょぎょランド",
+      "aliases": [],
+      "prefecture": "愛知県",
+      "prefecture_code": "23",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "freshwater_aquarium",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-23-0002",
+      "name": "南知多ビーチランド",
+      "aliases": [],
+      "prefecture": "愛知県",
+      "prefecture_code": "23",
+      "address": null,
+      "lat": 34.786339,
+      "lng": 136.855708,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.beachland.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11408304",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-23-0003",
+      "name": "名古屋シーライフ水族館",
+      "aliases": [
+        "シーライフ名古屋"
+      ],
+      "prefecture": "愛知県",
+      "prefecture_code": "23",
+      "address": null,
+      "lat": 35.050161,
+      "lng": 136.846284,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.legoland.jp/resort-guide/sealife-nagoya/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q53997414",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-23-0004",
+      "name": "名古屋港水族館",
+      "aliases": [],
+      "prefecture": "愛知県",
+      "prefecture_code": "23",
+      "address": null,
+      "lat": 35.0906,
+      "lng": 136.8782,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://nagoyaaqua.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q7231211",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-23-0005",
+      "name": "東山動植物園 世界のメダカ館",
+      "aliases": [],
+      "prefecture": "愛知県",
+      "prefecture_code": "23",
+      "address": null,
+      "lat": 35.157901137,
+      "lng": 136.979539939,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "in_facility",
+      "official_url": "http://www.higashiyama.city.nagoya.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "名古屋市東山動植物園",
+      "notes": null,
+      "wikidata": "Q115283045",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-23-0006",
+      "name": "碧南海浜水族館",
+      "aliases": [],
+      "prefecture": "愛知県",
+      "prefecture_code": "23",
+      "address": null,
+      "lat": 34.880161,
+      "lng": 136.981967,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.city.hekinan.lg.jp/aquarium/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11587774",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-23-0007",
+      "name": "竹島水族館",
+      "aliases": [],
+      "prefecture": "愛知県",
+      "prefecture_code": "23",
+      "address": null,
+      "lat": 34.817018,
+      "lng": 137.23222,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.city.gamagori.lg.jp/site/takesui/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11599117",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-23-0008",
+      "name": "弥富金魚水族館 YaToMi AQUA",
+      "aliases": [],
+      "prefecture": "愛知県",
+      "prefecture_code": "23",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://www.city.yatomi.lg.jp/event_info/1001259/1005653.html",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q117485087",
+      "sources": [
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": []
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-24-0001",
+      "name": "ウミガメ公園 ウミガメ水族館",
+      "aliases": [],
+      "prefecture": "三重県",
+      "prefecture_code": "24",
+      "address": "三重県南牟婁郡紀宝町井田568-7",
+      "lat": 33.769777777,
+      "lng": 136.0285,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "learning_exhibit",
+      "official_url": "https://umigame.info/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "道の駅 紀宝町ウミガメ公園",
+      "notes": "道の駅内のウミガメ専門の展示館（要確認）",
+      "wikidata": "Q11641448",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-24-0002",
+      "name": "伊勢シーパラダイス",
+      "aliases": [
+        "ゼロ距離水族館伊勢シーパラダイス",
+        "伊勢夫婦岩ふれあい水族館 シーパラダイス"
+      ],
+      "prefecture": "三重県",
+      "prefecture_code": "24",
+      "address": "三重県伊勢市二見町江580番地",
+      "lat": 34.507222,
+      "lng": 136.791944,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://ise-seaparadise.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11371781",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-24-0003",
+      "name": "赤目滝水族館",
+      "aliases": [
+        "日本サンショウウオセンター"
+      ],
+      "prefecture": "三重県",
+      "prefecture_code": "24",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://www.akame48taki.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-24-0004",
+      "name": "鳥羽水族館",
+      "aliases": [],
+      "prefecture": "三重県",
+      "prefecture_code": "24",
+      "address": "三重県鳥羽市鳥羽3丁目3-6",
+      "lat": 34.4817,
+      "lng": 136.846,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://aquarium.co.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q1073067",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-25-0001",
+      "name": "小さなびわ湖水族館",
+      "aliases": [],
+      "prefecture": "滋賀県",
+      "prefecture_code": "25",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-25-0002",
+      "name": "滋賀県立琵琶湖博物館",
+      "aliases": [],
+      "prefecture": "滋賀県",
+      "prefecture_code": "25",
+      "address": "滋賀県草津市下物町1091",
+      "lat": 35.074139,
+      "lng": 135.934917,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://www.biwahaku.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "淡水の水族展示を含む博物館",
+      "wikidata": "Q11564667",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-25-0003",
+      "name": "小さな水族館 びわこベース",
+      "aliases": [],
+      "prefecture": "滋賀県",
+      "prefecture_code": "25",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://www.biwako-base.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-26-0001",
+      "name": "京都水族館",
+      "aliases": [],
+      "prefecture": "京都府",
+      "prefecture_code": "26",
+      "address": null,
+      "lat": 34.987556,
+      "lng": 135.747611,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.kyoto-aquarium.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11375621",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-26-0002",
+      "name": "京都花園教会水族館",
+      "aliases": [],
+      "prefecture": "京都府",
+      "prefecture_code": "26",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://www.kyotohanasui.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-27-0001",
+      "name": "NIFREL（ニフレル）",
+      "aliases": [],
+      "prefecture": "大阪府",
+      "prefecture_code": "27",
+      "address": null,
+      "lat": 34.80641667,
+      "lng": 135.53358333,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.nifrel.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q21654084",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-27-0002",
+      "name": "あくあぴあ芥川",
+      "aliases": [
+        "高槻市立自然博物館"
+      ],
+      "prefecture": "大阪府",
+      "prefecture_code": "27",
+      "address": null,
+      "lat": 34.864111,
+      "lng": 135.592111,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://www.city.takatsuki.osaka.jp/life/6/60/310/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11257046",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-27-0003",
+      "name": "ノアドルフィンドーム",
+      "aliases": [],
+      "prefecture": "大阪府",
+      "prefecture_code": "27",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "marine_exhibit",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-27-0004",
+      "name": "海遊館",
+      "aliases": [],
+      "prefecture": "大阪府",
+      "prefecture_code": "27",
+      "address": null,
+      "lat": 34.654472222,
+      "lng": 135.428888888,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.kaiyukan.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q1191885",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-27-0005",
+      "name": "プラネットアクア・ポート（ひらかたパーク）",
+      "aliases": [],
+      "prefecture": "大阪府",
+      "prefecture_code": "27",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "in_facility",
+      "official_url": "https://www.hirakatapark.co.jp/attractions/aquarium/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "ひらかたパーク",
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-28-0001",
+      "name": "淡路じゃのひれ ドルフィンアーチ",
+      "aliases": [],
+      "prefecture": "兵庫県",
+      "prefecture_code": "28",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "marine_exhibit",
+      "official_url": "http://janohire.co.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-28-0002",
+      "name": "みなとやま水族館",
+      "aliases": [],
+      "prefecture": "兵庫県",
+      "prefecture_code": "28",
+      "address": null,
+      "lat": 34.689593,
+      "lng": 135.165447,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://minatoyama.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q123566518",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-28-0003",
+      "name": "アクア東条",
+      "aliases": [],
+      "prefecture": "兵庫県",
+      "prefecture_code": "28",
+      "address": null,
+      "lat": 34.928722,
+      "lng": 135.066611,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://www.hyoturi.or.jp/aqua/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11282873",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-28-0004",
+      "name": "átoa（アトア）",
+      "aliases": [],
+      "prefecture": "兵庫県",
+      "prefecture_code": "28",
+      "address": "兵庫県神戸市中央区新港町7-2",
+      "lat": 34.68323508,
+      "lng": 135.1936128,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://atoa-kobe.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q109597317",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-28-0005",
+      "name": "城崎マリンワールド",
+      "aliases": [],
+      "prefecture": "兵庫県",
+      "prefecture_code": "28",
+      "address": "兵庫県豊岡市瀬戸1090番地",
+      "lat": 35.655833,
+      "lng": 134.824861,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://marineworld.hiyoriyama.co.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11426136",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-28-0006",
+      "name": "姫路市立水族館",
+      "aliases": [],
+      "prefecture": "兵庫県",
+      "prefecture_code": "28",
+      "address": null,
+      "lat": 34.822722,
+      "lng": 134.676028,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.city.himeji.lg.jp/aqua/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q2584900",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-28-0007",
+      "name": "神戸須磨シーワールド",
+      "aliases": [],
+      "prefecture": "兵庫県",
+      "prefecture_code": "28",
+      "address": null,
+      "lat": 34.644166666,
+      "lng": 135.128611111,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.kobesuma-seaworld.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q125228535",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-30-0001",
+      "name": "アドベンチャーワールド",
+      "aliases": [],
+      "prefecture": "和歌山県",
+      "prefecture_code": "30",
+      "address": null,
+      "lat": 33.66775,
+      "lng": 135.375797,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "in_facility",
+      "official_url": "https://www.aws-s.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q2587322",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-30-0002",
+      "name": "すさみ町立エビとカニの水族館",
+      "aliases": [],
+      "prefecture": "和歌山県",
+      "prefecture_code": "30",
+      "address": null,
+      "lat": 33.504556,
+      "lng": 135.588806,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "small_aquarium",
+      "official_url": "https://ebikani-aquarium.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q17219170",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-30-0003",
+      "name": "ドルフィンリゾート",
+      "aliases": [],
+      "prefecture": "和歌山県",
+      "prefecture_code": "30",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "marine_exhibit",
+      "official_url": "https://www.dolphinresort2.net/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-30-0004",
+      "name": "串本海中公園",
+      "aliases": [],
+      "prefecture": "和歌山県",
+      "prefecture_code": "30",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "general_aquarium",
+      "official_url": "http://www.kushimoto.co.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-30-0005",
+      "name": "和歌山県立自然博物館",
+      "aliases": [],
+      "prefecture": "和歌山県",
+      "prefecture_code": "30",
+      "address": null,
+      "lat": 34.158639,
+      "lng": 135.192083,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "learning_exhibit",
+      "official_url": "https://www.shizenhaku.wakayama-c.ed.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11417475",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-30-0006",
+      "name": "太地町立くじらの博物館",
+      "aliases": [],
+      "prefecture": "和歌山県",
+      "prefecture_code": "30",
+      "address": null,
+      "lat": 33.601917,
+      "lng": 135.945806,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "marine_exhibit",
+      "official_url": "http://www.kujirakan.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11265357",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-30-0007",
+      "name": "京都大学白浜水族館",
+      "aliases": [
+        "京都大学瀬戸臨海実験所水族館"
+      ],
+      "prefecture": "和歌山県",
+      "prefecture_code": "30",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "general_aquarium",
+      "official_url": "http://www.seto.kyoto-u.ac.jp/aquarium/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q111247590",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": []
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-31-0001",
+      "name": "とっとり賀露かにっこ館",
+      "aliases": [],
+      "prefecture": "鳥取県",
+      "prefecture_code": "31",
+      "address": null,
+      "lat": 35.5345,
+      "lng": 134.178888888,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "learning_exhibit",
+      "official_url": "https://kanikko.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11264065",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-32-0001",
+      "name": "島根県立宍道湖自然館ゴビウス",
+      "aliases": [],
+      "prefecture": "島根県",
+      "prefecture_code": "32",
+      "address": "島根県出雲市園町1659-5",
+      "lat": 35.44722222,
+      "lng": 132.86444444,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://www.gobius.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q47164008",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-32-0002",
+      "name": "島根県立しまね海洋館 アクアス",
+      "aliases": [],
+      "prefecture": "島根県",
+      "prefecture_code": "32",
+      "address": null,
+      "lat": 34.959444,
+      "lng": 132.144583,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://aquas.or.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11476470",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-32-0003",
+      "name": "瑞穂ハンザケ自然館",
+      "aliases": [],
+      "prefecture": "島根県",
+      "prefecture_code": "32",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-33-0001",
+      "name": "岡山市環境学習センター めだかの学校",
+      "aliases": [],
+      "prefecture": "岡山県",
+      "prefecture_code": "33",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-33-0002",
+      "name": "渋川マリン水族館（玉野海洋博物館）",
+      "aliases": [],
+      "prefecture": "岡山県",
+      "prefecture_code": "33",
+      "address": null,
+      "lat": 34.454875,
+      "lng": 133.905478,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.city.tamano.lg.jp/site/kaihaku/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11572836",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-33-0003",
+      "name": "真庭市オオサンショウウオ保護センター",
+      "aliases": [],
+      "prefecture": "岡山県",
+      "prefecture_code": "33",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-33-0004",
+      "name": "笠岡市立カブトガニ博物館",
+      "aliases": [],
+      "prefecture": "岡山県",
+      "prefecture_code": "33",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": "https://www.city.kasaoka.okayama.jp/site/kabutogani/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-34-0001",
+      "name": "シン・マリホ水族館",
+      "aliases": [
+        "マリホ水族館"
+      ],
+      "prefecture": "広島県",
+      "prefecture_code": "34",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://mariho-aquarium.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q109602084",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": []
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-34-0002",
+      "name": "みやじマリン 宮島水族館",
+      "aliases": [],
+      "prefecture": "広島県",
+      "prefecture_code": "34",
+      "address": null,
+      "lat": 34.295392,
+      "lng": 132.315356,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.miyajima-aqua.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q6764196",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-34-0003",
+      "name": "広島もとまち水族館",
+      "aliases": [],
+      "prefecture": "広島県",
+      "prefecture_code": "34",
+      "address": "広島県広島市中区基町6-78 基町クレド・パセーラ 7階",
+      "lat": 34.3972286,
+      "lng": 132.4572746,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "small_aquarium",
+      "official_url": "https://aquarium-hiroshima.com",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q141961798",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-34-0004",
+      "name": "福山大学マリンバイオセンター水族館",
+      "aliases": [],
+      "prefecture": "広島県",
+      "prefecture_code": "34",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": "https://www.fukuyama-u.ac.jp/marine-bio-center/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-35-0001",
+      "name": "なぎさ水族館",
+      "aliases": [],
+      "prefecture": "山口県",
+      "prefecture_code": "35",
+      "address": null,
+      "lat": 33.95125,
+      "lng": 132.43791667,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "small_aquarium",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q48752477",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-35-0002",
+      "name": "下関市立しものせき水族館 海響館",
+      "aliases": [],
+      "prefecture": "山口県",
+      "prefecture_code": "35",
+      "address": null,
+      "lat": 33.954472,
+      "lng": 130.942417,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.kaikyokan.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11361443",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-36-0001",
+      "name": "日和佐うみがめ博物館カレッタ",
+      "aliases": [],
+      "prefecture": "徳島県",
+      "prefecture_code": "36",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": "http://caretta-hiwasa.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-36-0002",
+      "name": "海陽町立海洋自然博物館マリンジャム",
+      "aliases": [],
+      "prefecture": "徳島県",
+      "prefecture_code": "36",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://marine.kaiyo-kankou.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-37-0001",
+      "name": "四国水族館",
+      "aliases": [],
+      "prefecture": "香川県",
+      "prefecture_code": "37",
+      "address": null,
+      "lat": 34.312777777,
+      "lng": 133.808055555,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://shikoku-aquarium.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q66432954",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-37-0002",
+      "name": "新屋島水族館",
+      "aliases": [],
+      "prefecture": "香川県",
+      "prefecture_code": "37",
+      "address": null,
+      "lat": 34.358472,
+      "lng": 134.1,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://r.goope.jp/new-yashima-aq",
+      "status": "temporarily_closed",
+      "status_note": "休館中。2027年春リニューアル予定と掲載（マンボウなんでも博物館の一覧による。要確認）",
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11501972",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-37-0003",
+      "name": "日本ドルフィンセンター",
+      "aliases": [],
+      "prefecture": "香川県",
+      "prefecture_code": "37",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "marine_exhibit",
+      "official_url": "https://www.j-dc2.net/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-38-0001",
+      "name": "虹の森公園 おさかな館",
+      "aliases": [
+        "四万十川学習センターおさかな館"
+      ],
+      "prefecture": "愛媛県",
+      "prefecture_code": "38",
+      "address": null,
+      "lat": 33.229167,
+      "lng": 132.710278,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "freshwater_aquarium",
+      "official_url": "http://www.morinokuni.or.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11419591",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-39-0001",
+      "name": "むろと廃校水族館",
+      "aliases": [],
+      "prefecture": "高知県",
+      "prefecture_code": "39",
+      "address": null,
+      "lat": 33.326633,
+      "lng": 134.19552,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "small_aquarium",
+      "official_url": "https://www.city.muroto.kochi.jp/pages/page0343.php",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q56739393",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-39-0002",
+      "name": "四万十川学遊館 あきついお",
+      "aliases": [],
+      "prefecture": "高知県",
+      "prefecture_code": "39",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://gakuyukan.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-39-0003",
+      "name": "室戸ドルフィンセンター",
+      "aliases": [],
+      "prefecture": "高知県",
+      "prefecture_code": "39",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "marine_exhibit",
+      "official_url": "https://muroto.j-dc.net/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-39-0004",
+      "name": "桂浜水族館",
+      "aliases": [],
+      "prefecture": "高知県",
+      "prefecture_code": "39",
+      "address": null,
+      "lat": 33.496944,
+      "lng": 133.573556,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://katurahama-aq.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11536832",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-39-0005",
+      "name": "高知県立足摺海洋館 SATOUMI",
+      "aliases": [],
+      "prefecture": "高知県",
+      "prefecture_code": "39",
+      "address": "高知県土佐清水市三崎字今芝4032",
+      "lat": 32.791333,
+      "lng": 132.862861,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://kaiyoukan.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q99611864",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-40-0001",
+      "name": "やながわ有明海水族館",
+      "aliases": [],
+      "prefecture": "福岡県",
+      "prefecture_code": "40",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "https://www.spera-morisatoumi.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-40-0002",
+      "name": "マリンワールド海の中道",
+      "aliases": [],
+      "prefecture": "福岡県",
+      "prefecture_code": "40",
+      "address": null,
+      "lat": 33.66083333,
+      "lng": 130.36333333,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://marine-world.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q6764266",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-42-0001",
+      "name": "九十九島水族館 海きらら",
+      "aliases": [],
+      "prefecture": "長崎県",
+      "prefecture_code": "42",
+      "address": null,
+      "lat": 33.16138889,
+      "lng": 129.67944444,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://pearlsea.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": "座標は九十九島パールシーリゾート（施設群）の代表点",
+      "wikidata": "Q7400110",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-42-0002",
+      "name": "壱岐イルカパーク＆リゾート",
+      "aliases": [],
+      "prefecture": "長崎県",
+      "prefecture_code": "42",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "marine_exhibit",
+      "official_url": "https://irukapark.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-42-0003",
+      "name": "長崎ペンギン水族館",
+      "aliases": [],
+      "prefecture": "長崎県",
+      "prefecture_code": "42",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "general_aquarium",
+      "official_url": "https://penguin-aqua.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-43-0001",
+      "name": "海中水族館シードーナツ",
+      "aliases": [],
+      "prefecture": "熊本県",
+      "prefecture_code": "43",
+      "address": null,
+      "lat": 32.52983333,
+      "lng": 130.42836111,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "http://amakusapearl.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11281777",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-44-0001",
+      "name": "うみたま体験パーク つくみイルカ島",
+      "aliases": [],
+      "prefecture": "大分県",
+      "prefecture_code": "44",
+      "address": null,
+      "lat": 33.070278,
+      "lng": 131.955,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "marine_exhibit",
+      "official_url": "http://www.tsukumi-irukajima.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11260727",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-44-0002",
+      "name": "大分マリーンパレス水族館 うみたまご",
+      "aliases": [],
+      "prefecture": "大分県",
+      "prefecture_code": "44",
+      "address": null,
+      "lat": 33.25877778,
+      "lng": 131.53555556,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://www.umitamago.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11432633",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-44-0003",
+      "name": "番匠おさかな館",
+      "aliases": [],
+      "prefecture": "大分県",
+      "prefecture_code": "44",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "freshwater_aquarium",
+      "official_url": "https://www.michinoeki-yayoi.com/banjou-osakanakan",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": "道の駅やよい",
+      "notes": "道の駅内の淡水魚水族館（要確認）",
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-45-0001",
+      "name": "すみえファミリー水族館",
+      "aliases": [],
+      "prefecture": "宮崎県",
+      "prefecture_code": "45",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "small_aquarium",
+      "official_url": "http://sunbeach-sumie.com/sumie_family_aquarium.html",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-45-0002",
+      "name": "出の山淡水魚水族館",
+      "aliases": [],
+      "prefecture": "宮崎県",
+      "prefecture_code": "45",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "freshwater_aquarium",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-45-0003",
+      "name": "志布志湾大黒イルカランド",
+      "aliases": [],
+      "prefecture": "宮崎県",
+      "prefecture_code": "45",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "marine_exhibit",
+      "official_url": "http://www.irukaland.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-45-0004",
+      "name": "高千穂峡淡水魚水族館",
+      "aliases": [],
+      "prefecture": "宮崎県",
+      "prefecture_code": "45",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "freshwater_aquarium",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-46-0001",
+      "name": "いおワールドかごしま水族館",
+      "aliases": [],
+      "prefecture": "鹿児島県",
+      "prefecture_code": "46",
+      "address": "鹿児島県鹿児島市本港新町3番地1",
+      "lat": 31.595972,
+      "lng": 130.564444,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "http://ioworld.jp/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q11259022",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat",
+            "address"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-46-0002",
+      "name": "奄美海洋展示館",
+      "aliases": [],
+      "prefecture": "鹿児島県",
+      "prefecture_code": "46",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "marine_exhibit",
+      "official_url": "https://www.ohama.marutani-amami.com/ocean-exhibition-hall",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture",
+            "official_url"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-47-0001",
+      "name": "DMMかりゆし水族館",
+      "aliases": [],
+      "prefecture": "沖縄県",
+      "prefecture_code": "47",
+      "address": null,
+      "lat": 26.156305555,
+      "lng": 127.650416666,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://kariyushi-aquarium.com/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q56347666",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-47-0002",
+      "name": "久米島ウミガメ館",
+      "aliases": [],
+      "prefecture": "沖縄県",
+      "prefecture_code": "47",
+      "address": null,
+      "lat": null,
+      "lng": null,
+      "coord_source": null,
+      "coord_note": "未登録（後で一括補完）",
+      "category": "learning_exhibit",
+      "official_url": null,
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": null,
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    },
+    {
+      "id": "aq-47-0003",
+      "name": "沖縄美ら海水族館",
+      "aliases": [],
+      "prefecture": "沖縄県",
+      "prefecture_code": "47",
+      "address": null,
+      "lat": 26.69438889,
+      "lng": 127.87794444,
+      "coord_source": "wikidata",
+      "coord_note": "Wikidata の座標（施設の代表点）",
+      "category": "general_aquarium",
+      "official_url": "https://churaumi.okinawa/",
+      "status": "operating",
+      "status_note": null,
+      "closed_date": null,
+      "parent_facility": null,
+      "notes": null,
+      "wikidata": "Q1445750",
+      "sources": [
+        {
+          "ref": "aquarium_map",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "manboumuseum",
+          "fields": [
+            "name",
+            "prefecture"
+          ]
+        },
+        {
+          "ref": "wikidata",
+          "fields": [
+            "lat"
+          ]
+        }
+      ],
+      "registered_at": "2026-11-21",
+      "verified_at": null,
+      "verification": "listed"
+    }
+  ]
+}

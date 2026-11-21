@@ -1,0 +1,259 @@
+{
+  "generated_at": "2026-11-21",
+  "pending": [
+    {
+      "prefecture": "東京都",
+      "name": "よみうりランド アシカ館",
+      "reason": "所在地が資料間で食い違う（JAZA名簿は神奈川県川崎市多摩区、遊園地の住所は東京都稲城市）ため、確認できるまで保留"
+    },
+    {
+      "prefecture": "東京都",
+      "name": "アートアクアリウム美術館 GINZA",
+      "reason": "金魚を使ったアート展示の美術館。水族館として扱うか要判断"
+    },
+    {
+      "prefecture": "神奈川県",
+      "name": "北里アクアリウムラボ",
+      "reason": "北里大学キャンパス内のミニ水族館。一般公開の条件を未確認"
+    },
+    {
+      "prefecture": "神奈川県",
+      "name": "タッチうおっち水族館",
+      "reason": "ソレイユの丘内のふれあい施設（12種）。小規模な水槽展示に当たるか要判断"
+    },
+    {
+      "prefecture": "神奈川県",
+      "name": "観音崎自然博物館",
+      "reason": "博物館。水槽展示の規模が除外対象に当たるか要判断"
+    },
+    {
+      "prefecture": "神奈川県",
+      "name": "まかどシーマリンパーク（横浜市立間門小学校附属水族館）",
+      "reason": "小学校附属。一般公開の条件を未確認"
+    },
+    {
+      "prefecture": "埼玉県",
+      "name": "ハートフル桶西水族館（埼玉県立桶川西高等学校）",
+      "reason": "高校内。一般公開の条件を未確認"
+    },
+    {
+      "prefecture": "埼玉県",
+      "name": "埼玉県立川の博物館",
+      "reason": "博物館の水槽展示。除外対象に当たるか要判断"
+    },
+    {
+      "prefecture": "千葉県",
+      "name": "千葉大学 海洋バイオシステム研究センター水族館",
+      "reason": "大学施設。一般公開の条件を未確認"
+    },
+    {
+      "prefecture": "千葉県",
+      "name": "“渚の駅”たてやま 海辺の広場",
+      "reason": "渚の駅（道の駅に類する施設）内の展示。除外対象に当たるか要判断"
+    },
+    {
+      "prefecture": "茨城県",
+      "name": "ミュージアムパーク茨城県自然博物館",
+      "reason": "博物館の水槽展示。除外対象に当たるか要判断"
+    },
+    {
+      "prefecture": "北海道",
+      "name": "函館朝市ミニ水族館",
+      "reason": "市場内の小規模展示。除外対象に当たるか要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "北海道",
+      "name": "水族館プティ（道の駅厚岸グルメパーク）",
+      "reason": "道の駅内の展示。除外対象に当たるか要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "北海道",
+      "name": "氷海展望塔オホーツクタワー",
+      "reason": "海中展望塔。オホーツクとっかりセンターと別に登録するか要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "岩手県",
+      "name": "岩手県立水産科学館",
+      "reason": "水産科学館の展示。除外対象に当たるか要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "宮城県",
+      "name": "仙台市八木山動物公園",
+      "reason": "動物園。水生生物展示の有無を未確認",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "東京都",
+      "name": "UWS AQUARIUM GA☆KYO",
+      "reason": "施設の性格（常設の水族館か）を未確認",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "東京都",
+      "name": "上野動物園 両生爬虫類館",
+      "reason": "動物園内の両生爬虫類館。収録対象か要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "長野県",
+      "name": "国営アルプスあづみの公園 あづみの学校",
+      "reason": "公園施設内の展示。除外対象に当たるか要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "岐阜県",
+      "name": "民芸ミュージアム 匠の館 森の水族館",
+      "reason": "民芸館内の展示。規模を未確認",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "静岡県",
+      "name": "体感型動物園 iZoo",
+      "reason": "爬虫類中心の動物園。収録対象か要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "静岡県",
+      "name": "熱川バナナワニ園",
+      "reason": "ワニ・植物園。収録対象か要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "静岡県",
+      "name": "時之栖 水中楽園AQUARIUM",
+      "reason": "常設か期間限定かを未確認",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "愛知県",
+      "name": "のんほいパーク（豊橋総合動植物公園）",
+      "reason": "動植物園。水生生物展示の扱いを要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "大阪府",
+      "name": "きんたい廃校博物館",
+      "reason": "廃校活用の博物館。規模を未確認",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "奈良県",
+      "name": "郡山金魚資料館",
+      "reason": "金魚の資料館。収録対象か要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "和歌山県",
+      "name": "ドルフィンベェイス",
+      "reason": "イルカとのふれあい事業。収録対象か要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "広島県",
+      "name": "広島市漁業振興センター 海と漁業の資料展示室",
+      "reason": "資料展示室。除外対象に当たるか要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "山口県",
+      "name": "岩国市ミクロ生物館",
+      "reason": "微生物の展示館。収録対象か要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "愛媛県",
+      "name": "ドルフィンファームしまなみ",
+      "reason": "イルカとのふれあい事業。収録対象か要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "愛媛県",
+      "name": "長高水族館（愛媛県立長浜高等学校）",
+      "reason": "高校の水族館。一般公開の条件を未確認",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "福岡県",
+      "name": "北九州市水環境館",
+      "reason": "河川の観察施設。除外対象に当たるか要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "佐賀県",
+      "name": "鹿島市干潟交流館 なな海",
+      "reason": "交流館の展示。除外対象に当たるか要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "佐賀県",
+      "name": "佐賀県立宇宙科学館 ゆめぎんが",
+      "reason": "科学館の水槽展示。除外対象",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "長崎県",
+      "name": "干拓の里 むつごろう水族館",
+      "reason": "2022年10月から休館と掲載。営業再開を未確認",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "大分県",
+      "name": "白池地獄",
+      "reason": "温泉地獄の熱帯魚展示。収録対象か要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "宮崎県",
+      "name": "大淀川学習館",
+      "reason": "学習館の展示。除外対象に当たるか要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "沖縄県",
+      "name": "さんご館",
+      "reason": "サンゴ養殖施設。収録対象か要判断",
+      "listed_in": "M"
+    },
+    {
+      "prefecture": "京都府",
+      "name": "丹後魚っ知館",
+      "reason": "Wikidataのみに掲載。2つの一覧に無いため保留",
+      "listed_in": "W"
+    },
+    {
+      "prefecture": "徳島県",
+      "name": "モラスコむぎ",
+      "reason": "Wikidataのみに掲載。2つの一覧に無いため保留",
+      "listed_in": "W"
+    },
+    {
+      "prefecture": "佐賀県",
+      "name": "伊万里湾カブトガニの館",
+      "reason": "Wikidataのみに掲載。2つの一覧に無いため保留",
+      "listed_in": "W"
+    }
+  ],
+  "upcoming": [
+    {
+      "prefecture": "東京都",
+      "name": "東京よみうり水族館",
+      "reason": "2027年夏開業予定と報道。未開業"
+    },
+    {
+      "prefecture": "静岡県",
+      "name": "Zoo Zoo Sea",
+      "reason": "2029年度開業予定と掲載。未開業"
+    }
+  ],
+  "excluded_closed": [
+    {
+      "prefecture": "静岡県",
+      "name": "東海大学海洋科学博物館",
+      "reason": "2024年10月31日で本館の一般公開終了と掲載"
+    }
+  ]
+}

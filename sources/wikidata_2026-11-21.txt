@@ -1,0 +1,98 @@
+# Wikidata (CC0) query result, 2026-11-21. instance/subclass of public aquarium (Q2281788), country Japan.
+# QID|label(ja)|Point(lon lat)|prefecture|address(P6375)|official website(P856)|end date
+# Only rows used for the dataset (current facilities) are kept here; closed/historic rows are listed at the bottom.
+Q11261729|おたる水族館|Point(141.01125 43.236806)|北海道||https://otaru-aq.jp/|
+Q11292366|オホーツクとっかりセンター|Point(143.373528 44.333583)|北海道|||
+Q11405627|サケのふるさと 千歳水族館|Point(141.659167 42.832722)|北海道||https://chitose-aq.jp/|
+Q11305917|サンピアザ水族館|Point(141.471666666 43.036944444)|北海道|札幌市厚別区厚別中央2条5丁目7-5|https://www.sunpiazza-aquarium.com/|
+Q11596319|稚内市立ノシャップ寒流水族館|Point(141.644916666 45.449333333)|北海道||https://www.city.wakkanai.hokkaido.jp/suizokukan/|
+Q11465797|山の水族館|Point(143.500278 43.754278)|北海道||https://onneyu-aq.com/|
+Q11480658|市立室蘭水族館|Point(140.94375 42.33975)|北海道||http://www.iburi.net/murosui/|
+Q11521425|札幌市豊平川さけ科学館|Point(141.34333333 43.00111111)|北海道||https://salmon-museum.jp/|
+Q11542208|標津サーモン科学館|Point(145.116139 43.660083)|北海道||http://s-salmon.com/|
+Q11579106|登別マリンパークニクス|Point(141.182194 42.454972)|北海道||https://www.nixe.co.jp/|
+Q4803495|青森県営浅虫水族館|Point(140.862778 40.897583)|青森県||http://asamushi-aqua.com/|
+Q11279914|もぐらんぴあ|Point(141.815722 40.221289)|岩手県||https://www.moguranpia.com/|
+Q21652335|アクアテラス錦ケ丘|Point(140.76505556 38.25711111)|宮城県||https://aquaterrace.co.jp/|
+Q17222417|仙台うみの杜水族館|Point(140.98066667 38.27108333)|宮城県||https://www.uminomori.jp/umino/|
+Q11595485|秋田県立男鹿水族館|Point(139.704583 39.942167)|秋田県||https://www.gao-aqua.jp/|
+Q11675955|鶴岡市立加茂水族館|Point(139.724972 38.762222)|山形県||https://kamo-kurage.jp/|
+Q4782699|アクアマリンふくしま|Point(140.9015 36.94275)|福島県||https://www.aquamarine.or.jp/|
+Q38266933|アクアマリンいなわしろカワセミ水族館|Point(140.07458333 37.56138889)|福島県||https://www.aquamarine.or.jp/kawasemi/|
+Q21652750|かすみがうら市水族館|Point(140.37600694 36.07159389)|茨城県||https://www.dane-kerry.com/aquarium.html|
+Q11535182|栃木県なかがわ水遊園|Point(140.128694 36.789139)|栃木県||https://tnap.jp/|
+Q85875396|世界一ちっちゃな水族館|Point(140.840416666 35.707111111)|千葉県||https://choshi-aquarium.jimdofree.com/|
+Q97169050|カワスイ 川崎水族館|Point(139.696305555 35.529611111)|神奈川県||https://kawa-sui.com/|
+Q11582155|相模川ふれあい科学館|Point(139.328889 35.547417)|神奈川県||https://sagamigawa-fureai.com/|
+Q114355208|横浜開運水族館フォーチュンアクアリウム||神奈川県||https://fortune-aquarium.com/|
+Q11360163|上越市立水族博物館|Point(138.23297222 37.1735)|新潟県|新潟県上越市五智2-15-15|https://www.umigatari.jp/joetsu/|
+Q11502898|新潟市水族館 マリンピア日本海|Point(139.027975 37.923633333)|新潟県|新潟県新潟市中央区西船見町5932-445|https://www.marinepia.or.jp/|
+Q61722200|寺泊水族博物館|Point(138.760277777 37.633888888)|新潟県||https://aquarium-teradomari.jp/|
+Q61721910|イヨボヤ会館|Point(139.471388888 38.227777777)|新潟県||https://www.iyoboya.jp/|
+Q11650572|小千谷市錦鯉の里|Point(138.795277777 37.311111111)|新潟県||https://www.nishikigoinosato.jp/|
+Q11674044|魚津水族館|Point(137.38815 36.798389)|富山県||https://www.uozu-aquarium.jp/|
+Q11275197|のとじま臨海公園水族館|Point(136.98222222 37.14916667)|石川県||https://www.notoaqua.jp/|
+Q11636428|越前松島水族館|Point(136.147192 36.253055)|福井県||https://www.echizen-aquarium.com/|
+Q11469706|山梨県立富士湧水の里水族館|Point(138.82392778 35.45554444)|山梨県||http://www.morinonakano-suizokukan.com/|
+Q11621781|蓼科アミューズメント水族館|Point(138.302764 36.066572)|長野県||https://www.tateshina-aquarium.jp/|
+Q11282869|アクア・トトぎふ|Point(136.810472 35.371722)|岐阜県||https://aquatotto.com/|
+Q83789636|あわしまマリンパーク|Point(138.89 35.033555555)|静岡県||http://marinepark.jp/|
+Q11361202|下田海中水族館|Point(138.94597222 34.66605556)|静岡県||https://shimoda-aquarium.com/|
+Q3156501|伊豆・三津シーパラダイス|Point(138.895944 35.019444)|静岡県||https://www.mitosea.com/|
+Q11554537|沼津港深海水族館|Point(138.858167 35.083972)|静岡県||http://www.numazu-deepsea.com/|
+Q11408304|南知多ビーチランド|Point(136.855708 34.786339)|愛知県||https://www.beachland.jp/|
+Q53997414|名古屋シーライフ水族館|Point(136.846284 35.050161)|愛知県||https://www.legoland.jp/resort-guide/sealife-nagoya/|
+Q7231211|名古屋港水族館|Point(136.8782 35.0906)|愛知県||https://nagoyaaqua.jp/|
+Q115283045|世界のメダカ館|Point(136.979539939 35.157901137)|愛知県|||
+Q11587774|碧南海浜水族館|Point(136.981967 34.880161)|愛知県||https://www.city.hekinan.lg.jp/aquarium/|
+Q11599117|竹島水族館|Point(137.23222 34.817018)|愛知県||https://www.city.gamagori.lg.jp/site/takesui/|
+Q117485087|YaToMi AQUA||愛知県|||
+Q11641448|道の駅紀宝町ウミガメ公園|Point(136.0285 33.769777777)|三重県|三重県南牟婁郡紀宝町井田568-7|https://umigame.info/|
+Q11371781|ゼロ距離水族館伊勢シーパラダイス|Point(136.791944 34.507222)|三重県|三重県伊勢市二見町江580番地|https://ise-seaparadise.com/|
+Q1073067|鳥羽水族館|Point(136.846 34.4817)|三重県|三重県鳥羽市鳥羽3丁目3-6|https://aquarium.co.jp/|
+Q11564667|滋賀県立琵琶湖博物館|Point(135.934917 35.074139)|滋賀県|滋賀県草津市下物町1091|https://www.biwahaku.jp/|
+Q11375621|京都水族館|Point(135.747611 34.987556)|京都府||https://www.kyoto-aquarium.com/|
+Q21654084|NIFREL|Point(135.53358333 34.80641667)|大阪府||https://www.nifrel.jp/|
+Q11257046|あくあぴあ芥川|Point(135.592111 34.864111)|大阪府||https://www.city.takatsuki.osaka.jp/life/6/60/310/|
+Q1191885|海遊館|Point(135.428888888 34.654472222)|大阪府||https://www.kaiyukan.com/|
+Q123566518|みなとやま水族館|Point(135.165447 34.689593)|兵庫県||https://minatoyama.jp/|
+Q11282873|アクア東条|Point(135.066611 34.928722)|兵庫県|||
+Q109597317|アトア|Point(135.1936128 34.68323508)|兵庫県|兵庫県神戸市中央区新港町7-2|https://atoa-kobe.jp/|
+Q11426136|城崎マリンワールド|Point(134.824861 35.655833)|兵庫県|兵庫県豊岡市瀬戸1090番地|https://marineworld.hiyoriyama.co.jp/|
+Q2584900|姫路市立水族館|Point(134.676028 34.822722)|兵庫県||https://www.city.himeji.lg.jp/aqua/|
+Q125228535|神戸須磨シーワールド|Point(135.128611111 34.644166666)|兵庫県||https://www.kobesuma-seaworld.jp/|
+Q2587322|アドベンチャーワールド|Point(135.375797 33.66775)|和歌山県||https://www.aws-s.com/|
+Q17219170|すさみ海立エビとカニの水族館|Point(135.588806 33.504556)|和歌山県||https://ebikani-aquarium.com/|
+Q11417475|和歌山県立自然博物館|Point(135.192083 34.158639)|和歌山県||https://www.shizenhaku.wakayama-c.ed.jp/|
+Q11265357|くじらの博物館|Point(135.945806 33.601917)|和歌山県||http://www.kujirakan.jp/|
+Q111247590|京都大学フィールド科学教育研究センター瀬戸臨海実験所水族館||和歌山県||http://www.seto.kyoto-u.ac.jp/aquarium/|
+Q11264065|かにっこ館|Point(134.178888888 35.5345)|鳥取県||https://kanikko.jp/|
+Q47164008|宍道湖自然館ゴビウス|Point(132.86444444 35.44722222)|島根県|島根県出雲市園町1659-5|https://www.gobius.jp/|
+Q11476470|島根県立しまね海洋館|Point(132.144583 34.959444)|島根県||https://aquas.or.jp/|
+Q11572836|玉野市立玉野海洋博物館|Point(133.905478 34.454875)|岡山県||https://www.city.tamano.lg.jp/site/kaihaku/|
+Q109602084|マリホ水族館||広島県||https://mariho-aquarium.com/|
+Q6764196|宮島水族館|Point(132.315356 34.295392)|広島県||https://www.miyajima-aqua.jp/|
+Q141961798|広島もとまち水族館|Point(132.4572746 34.3972286)|広島県|広島県広島市中区基町6-78 基町クレド・パセーラ 7階|https://aquarium-hiroshima.com|
+Q48752477|なぎさ水族館|Point(132.43791667 33.95125)|山口県|||
+Q11361443|下関市立しものせき水族館|Point(130.942417 33.954472)|山口県||https://www.kaikyokan.com/|
+Q66432954|四国水族館|Point(133.808055555 34.312777777)|香川県||https://shikoku-aquarium.jp/|
+Q11501972|新屋島水族館|Point(134.1 34.358472)|香川県||https://r.goope.jp/new-yashima-aq|
+Q11419591|四万十川学習センターおさかな館|Point(132.710278 33.229167)|愛媛県||http://www.morinokuni.or.jp/|
+Q56739393|むろと廃校水族館|Point(134.19552 33.326633)|高知県||https://www.city.muroto.kochi.jp/pages/page0343.php|
+Q11536832|桂浜水族館|Point(133.573556 33.496944)|高知県||https://katurahama-aq.jp/|
+Q99611864|高知県立足摺海洋館|Point(132.862861 32.791333)|高知県|高知県土佐清水市三崎字今芝4032|https://kaiyoukan.jp/|
+Q6764266|マリンワールド海の中道|Point(130.36333333 33.66083333)|福岡県||https://marine-world.jp/|
+Q7400110|九十九島パールシーリゾート|Point(129.67944444 33.16138889)|長崎県||https://pearlsea.jp/|
+Q11281777|わくわく海中水族館シードーナツ|Point(130.42836111 32.52983333)|熊本県|||
+Q11260727|うみたま体験パーク「つくみイルカ島」|Point(131.955 33.070278)||||
+Q11432633|大分マリーンパレス水族館|Point(131.53555556 33.25877778)|大分県||https://www.umitamago.jp/|
+Q11259022|いおワールドかごしま水族館|Point(130.564444 31.595972)|鹿児島県|鹿児島県鹿児島市本港新町3番地1|http://ioworld.jp/|
+Q56347666|DMMかりゆし水族館|Point(127.650416666 26.156305555)|沖縄県||https://kariyushi-aquarium.com/|
+Q1445750|沖縄美ら海水族館|Point(127.87794444 26.69438889)|沖縄県||https://churaumi.okinawa/|
+# --- Wikidata-only rows not confirmed by a current list (left out / pending) ---
+# Q11673927 丹後魚っ知館 (京都府) / Q11344566 モラスコむぎ (徳島県) / Q11378725 伊万里湾カブトガニの館 (佐賀県)
+# Q7741262 氷の水族館 (宮城県, 冷凍展示) / Q11549303 水道記念館 (大阪府) / Q116921556 アートアクアリウム美術館 GINZA
+# Q11524680 東京大学臨海実験所 / Q17223432 Sony Aquarium / Q11357193 三蟠鉄道（誤分類）
+# 閉館（終了日あり）: 犬吠埼マリンパーク, 山方淡水魚館, 京急油壺マリンパーク, オホーツク水族館, マリンピア松島水族館, 志摩マリンランド,
+#   甲子園阪神パーク, 神戸市立須磨海浜水族園, 長崎水族館, ヨコハマおもしろ水族館
+# 座標・所在の記載がない旧施設: 横浜水族館, 堺水族館, 明石市立水族館, 下関市立水族館, 箱崎水族館, 鎌倉水族館, 板橋区立淡水魚水族館, ひろお水族館, 大うなぎ水族館イーランド

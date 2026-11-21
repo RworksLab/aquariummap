@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>水族館訪問マップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: 静かで澄んだ、大人の水族館めぐり手帳。
+   IDEA: 水槽のガラス越しに見る淡い水色の記録帳。
+   PICTURE: 淡いアクアの海に白い陸地の日本地図、訪問済みは深いアクアのピン。
+   COLOUR and TYPE: 白×淡いアクア、主色 #2a9fb3、お気に入りだけ珊瑚色。Zen Maru Gothic / Zen Kaku Gothic New。
+   LAYOUT: スマホ幅430pxの1カラム、下部固定ナビ4タブ、詳細は全画面シート。 */
+:root{color-scheme:light dark;
+--bg:light-dark(#f2f9fa,#0b1a1e);--card:light-dark(#ffffff,#12262b);--ink:light-dark(#173a42,#e3f1f3);--mute:light-dark(#6b8a90,#93b0b5);
+--aqua:light-dark(#2a9fb3,#5cc4d4);--aqua-d:light-dark(#1b7f90,#8fd9e4);--aqua-l:light-dark(#dff2f5,#173a41);--line:light-dark(#e1eef0,#1f3b42);
+--sea:light-dark(#d6eff3,#0f2d34);--land:light-dark(#ffffff,#1a363c);--edge:light-dark(#c4e0e5,#2c5058);--fav:#f0766a;--star:#f2b84b;
+--shadow:0 6px 24px light-dark(rgb(23 58 66/.08),rgb(0 0 0/.35));--r:18px;--nav:68px}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%}
+body{background:light-dark(#e6f2f4,#050e10);color:var(--ink);font:15px/1.65 "Zen Kaku Gothic New",system-ui,sans-serif;overflow:hidden}
+h1,h2,h3{font-family:"Zen Maru Gothic","Zen Kaku Gothic New",sans-serif;font-weight:700;line-height:1.3;margin:0;text-wrap:balance}
+h1{font-size:22px}h2{font-size:20px}h3{font-size:16px}
+button,input,select,textarea{font:inherit;color:var(--ink)}
+button{cursor:pointer;border:0;background:none;padding:0}
+:focus-visible{outline:3px solid var(--aqua);outline-offset:2px;border-radius:10px}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* アプリ枠：スマホ幅。PCでは中央にスマホサイズで表示 */
+.app{position:relative;width:100%;max-width:430px;height:100dvh;margin:0 auto;background:var(--bg);overflow:hidden;display:flex;flex-direction:column}
+@media(min-width:600px){.app{height:min(100dvh - 40px,900px);margin-top:20px;border-radius:32px;box-shadow:0 20px 60px rgb(23 58 66/.18)}}
+.screen{flex:1;overflow-y:auto;overflow-x:hidden;padding:0 18px calc(var(--nav) + 24px + env(safe-area-inset-bottom));display:none}
+.screen.on{display:block}
+.top{padding:calc(18px + env(safe-area-inset-top)) 0 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top small{display:block;color:var(--mute);font-size:12px}
+nav.tabs{position:absolute;left:0;right:0;bottom:0;height:calc(var(--nav) + env(safe-area-inset-bottom));padding:0 10px env(safe-area-inset-bottom);background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);z-index:20}
+nav.tabs button{display:grid;place-items:center;gap:2px;align-content:center;color:var(--mute);font-size:11px;min-height:44px}
+nav.tabs button[aria-current=page]{color:var(--aqua-d);font-weight:700}
+nav.tabs button[aria-current=page] svg{stroke-width:2.2}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow)}
+.chip{display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 10px;border-radius:99px;font-size:12px;background:var(--aqua-l);color:var(--aqua-d);white-space:nowrap}
+.chip.gray{background:light-dark(#eef1f2,#22343a);color:var(--mute)}.chip.warn{background:light-dark(#fff3dc,#3a2d12);color:light-dark(#8a5a00,#ffcf7a)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:0 18px;border-radius:14px;background:var(--aqua);color:#fff;font-weight:700}
+.btn.sub{background:var(--aqua-l);color:var(--aqua-d)}.btn.ghost{background:none;color:var(--mute);font-weight:500}
+.btn:disabled{opacity:.45}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:var(--card);box-shadow:var(--shadow);color:var(--ink)}
+.muted{color:var(--mute);font-size:13px}
+.empty{text-align:center;padding:48px 12px;color:var(--mute)}
+input,select,textarea{width:100%;min-height:46px;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:10px 14px;font-size:16px}
+textarea{min-height:110px;resize:vertical}
+label.f{display:grid;gap:6px;font-size:13px;color:var(--mute)}
+#s-map{padding:0;position:relative}
+#s-map.on{display:flex;flex-direction:column}
+#s-map .top{padding-inline:18px;position:absolute;left:0;right:0;top:0;z-index:2;pointer-events:none}
+#s-map .top>*{pointer-events:auto}
+.count{background:var(--card);border-radius:99px;padding:6px 14px;box-shadow:var(--shadow);font-size:13px;white-space:nowrap}.count b{font-size:17px;color:var(--aqua-d);margin-right:2px}
+.mapbox{position:relative;flex:1;background:var(--sea)}
+.mapbox svg.m{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.mapctl{position:absolute;right:14px;top:calc(84px + env(safe-area-inset-top));display:grid;gap:8px;z-index:2}
+.peek{position:absolute;left:14px;right:14px;bottom:calc(var(--nav) + 14px + env(safe-area-inset-bottom));padding:16px;display:flex;gap:12px;align-items:center;z-index:3;transform:translateY(16px);opacity:0;pointer-events:none;transition:.25s;cursor:pointer}
+.peek.on{transform:none;opacity:1;pointer-events:auto}
+.peek .t{flex:1}.peek h3{font-size:16px}
+.legend{position:absolute;left:14px;bottom:calc(var(--nav) + 14px + env(safe-area-inset-bottom));display:flex;gap:10px;font-size:11px;color:var(--mute);background:var(--card);padding:6px 12px;border-radius:99px;box-shadow:var(--shadow)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:0}
+.search{position:relative}.search svg{position:absolute;left:14px;top:12px;color:var(--mute)}.search input{padding-left:44px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+.seg{display:flex;background:var(--aqua-l);border-radius:12px;padding:3px}
+.seg button{height:34px;padding:0 11px;border-radius:9px;font-size:13px;color:var(--aqua-d)}
+.seg button[aria-pressed=true]{background:var(--card);box-shadow:0 1px 4px rgb(0 0 0/.08);font-weight:700}
+.filters select{width:auto;min-height:40px;height:40px;padding:0 12px;border-radius:12px;font-size:14px}
+.favf{height:40px;padding:0 12px;border-radius:12px;display:inline-flex;align-items:center;gap:4px;font-size:13px;background:var(--card);border:1px solid var(--line);color:var(--mute)}
+.favf[aria-pressed=true]{color:var(--fav);border-color:var(--fav)}
+.items{display:grid;gap:10px}
+.item{display:flex;align-items:center;gap:4px;padding:6px 8px 6px 0}
+.item .main{flex:1;display:flex;align-items:center;gap:12px;padding:8px 4px 8px 16px;text-align:left;min-height:44px}
+.pinbtn{width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:12px;color:var(--aqua-d)}
+.pinbtn:disabled{color:var(--line);cursor:default}
+.pinbtn:not(:disabled):active{background:var(--aqua-l)}
+.item .t{flex:1}.item strong{display:block;font-size:15px;line-height:1.4}
+.mark{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--aqua-l);color:var(--aqua-d);flex:none}
+.mark.v{background:var(--aqua);color:#fff}.mark.c{background:light-dark(#eef1f2,#22343a);color:var(--mute)}
+.heart.on{color:var(--fav)}.heart.on svg{fill:var(--fav)}
+.log{display:grid;gap:14px}
+.entry{overflow:hidden;text-align:left;width:100%;display:block}
+.entry .ph{aspect-ratio:16/9;background:var(--aqua-l);display:grid;place-items:center;color:var(--aqua);overflow:hidden}
+.entry .ph img{width:100%;height:100%;object-fit:cover}
+.entry .b{padding:14px 16px}
+.entry p{margin:6px 0 0;font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.stars{color:var(--star);letter-spacing:1px;font-size:14px;white-space:nowrap}
+.hero{padding:22px;display:flex;align-items:center;gap:20px}
+.ring{width:108px;height:108px;flex:none}
+.hero b{font-size:34px;font-family:"Zen Maru Gothic";color:var(--aqua-d);line-height:1}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 24px}
+.kpi{padding:16px}.kpi b{display:block;font-size:24px;font-family:"Zen Maru Gothic"}
+.prefs{padding:6px 18px}.pref{display:grid;grid-template-columns:4.5em minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.pref:last-child{border:0}.bar{height:8px;border-radius:99px;background:var(--aqua-l);overflow:hidden}.bar i{display:block;height:100%;background:var(--aqua);border-radius:99px}
+.sec{margin:26px 0 10px;display:flex;justify-content:space-between;align-items:baseline}
+.set{padding:4px 18px}.set>div{padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}.set>div:last-child{border:0}
+.sheet{position:absolute;inset:0;background:var(--bg);z-index:30;overflow-y:auto;overflow-x:hidden;transform:translateY(100%);transition:transform .3s ease;padding-bottom:40px;visibility:hidden}
+.sheet.on{transform:none;visibility:visible}
+.sheet .bar-top{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;padding:calc(12px + env(safe-area-inset-top)) 14px 10px;background:linear-gradient(var(--bg) 70%,transparent)}
+.dhead{padding:4px 22px 18px}
+.dhead h2{font-size:24px;margin:8px 0 6px}
+.dbody{padding:0 18px;display:grid;gap:14px}
+.info{padding:6px 18px}.info>div{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px;align-items:flex-start}.info>div:last-child{border:0}
+.info .k{color:var(--mute);width:5.5em;flex:none}.info .v{flex:1;overflow-wrap:anywhere}
+.info a{color:var(--aqua-d)}
+.visit{padding:16px 18px}
+.visit .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}
+.photos img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;display:block}
+.note{font-size:13px;padding:12px 14px;border-radius:14px;background:var(--aqua-l);color:var(--aqua-d);margin:0}
+.note.warn{background:light-dark(#fff3dc,#3a2d12);color:light-dark(#8a5a00,#ffcf7a)}
+dialog{border:0;padding:0;background:transparent;max-width:430px;width:100%;margin:auto auto 0;max-height:92dvh}
+dialog::backdrop{background:rgb(10 40 48/.35)}
+dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom));max-height:92dvh;overflow:auto;display:grid;gap:14px}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.rate{display:flex;gap:4px}.rate button{width:44px;height:44px;font-size:26px;color:light-dark(#d6e3e6,#2c454b)}.rate button.on{color:var(--star)}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px}.thumb{position:relative;width:76px;height:76px}.thumb img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.thumb button{position:absolute;right:-6px;top:-6px;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:14px;line-height:1}
+.addph{width:76px;height:76px;border-radius:12px;border:1.5px dashed var(--edge);display:grid;place-items:center;color:var(--aqua)}
+.acts{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.viewer{position:absolute;inset:0;background:rgb(0 0 0/.9);z-index:40;display:none;place-items:center}.viewer.on{display:grid}.viewer img{max-width:100%;max-height:100%}
+.toast{position:absolute;left:50%;bottom:calc(var(--nav) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50;white-space:nowrap}
+.toast.on{opacity:1}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r=".6"/><circle cx="4" cy="12" r=".6"/><circle cx="4" cy="18" r=".6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z"/><path d="M5 17a3 3 0 0 1 3-3h11"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-fish" viewBox="0 0 24 24"><path d="M3 12c3-5 9-6 13-3l5-3v12l-5-3c-4 3-10 2-13-3z"/><circle cx="8" cy="11" r=".6"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+</svg>
+<div class="app" id="app">
+
+  <section class="screen on" id="s-map" aria-label="マップ">
+    <div class="top"><h1>水族館訪問マップ</h1><span class="count" id="mapCount"></span></div>
+    <div class="mapbox" id="mapbox"><svg class="m" id="map" role="img" aria-label="水族館の位置を示す日本地図"></svg></div>
+    <div class="mapctl"><button class="icon-btn" id="zin" aria-label="拡大"><svg class="i"><use href="#i-plus"/></svg></button><button class="icon-btn" id="zout" aria-label="縮小"><svg class="i"><use href="#i-minus"/></svg></button><button class="icon-btn" id="zfit" aria-label="全体を表示"><svg class="i"><use href="#i-full"/></svg></button></div>
+    <div class="legend" id="legend"><span><i style="background:var(--aqua)"></i>訪問済み</span><span><i style="background:#fff;border:1.5px solid var(--aqua)"></i>未訪問</span><span><i style="background:#c5cfd2"></i>閉館</span></div>
+    <div class="peek card" id="peek" role="button" tabindex="0"></div>
+  </section>
+
+  <section class="screen" id="s-list" aria-label="水族館一覧">
+    <div class="top"><h1>水族館一覧</h1><button class="icon-btn" id="addBtn" aria-label="施設を追加"><svg class="i"><use href="#i-plus"/></svg></button></div>
+    <div class="search"><svg class="i"><use href="#i-search"/></svg><input id="q" type="search" placeholder="施設名・住所で検索" aria-label="検索"></div>
+    <div class="filters">
+      <select id="fPref" aria-label="都道府県"><option value="">都道府県</option></select>
+      <div class="seg" role="group" aria-label="訪問状況"><button data-v="" aria-pressed="true">すべて</button><button data-v="v" aria-pressed="false">訪問済み</button><button data-v="n" aria-pressed="false">未訪問</button></div>
+      <button class="favf" id="fFav" aria-pressed="false"><svg class="i" style="width:16px;height:16px"><use href="#i-heart"/></svg>お気に入り</button>
+    </div>
+    <p class="muted" id="listCount" style="margin:0 0 10px"></p>
+    <div class="items" id="list"></div>
+  </section>
+
+  <section class="screen" id="s-log" aria-label="訪問記録">
+    <div class="top"><div><h1>訪問記録</h1><small id="logSub"></small></div></div>
+    <div class="log" id="log"></div>
+  </section>
+
+  <section class="screen" id="s-me" aria-label="マイページ">
+    <div class="top"><h1>マイページ</h1></div>
+    <div class="card hero"><svg class="ring" id="ring" viewBox="0 0 108 108" aria-hidden="true"></svg><div><span class="muted">全国の訪問達成率</span><br><b id="rate"></b><br><span class="muted" id="rateSub"></span></div></div>
+    <div class="kpis"><div class="card kpi"><span class="muted">訪問済み施設</span><b id="kVisited"></b></div><div class="card kpi"><span class="muted">お気に入り</span><b id="kFav"></b></div></div>
+    <div class="sec"><h3>都道府県別</h3><span class="muted">訪問 / 登録施設</span></div>
+    <div class="card prefs" id="prefs"></div>
+    <div class="sec"><h3>データ</h3></div>
+    <div class="card set">
+      <div id="storeLine">保存先を確認中…</div>
+      <div id="metaLine" class="muted"></div>
+      <div class="acts" style="justify-content:flex-start"><button class="btn sub" id="copyData">施設データをコピー</button><button class="btn sub" id="copyVisits">訪問記録をコピー</button></div>
+      <div id="backupRow" hidden><p class="muted" style="margin:0 0 10px">この端末のブラウザに保存しています。機種変更やブラウザのデータ削除に備えて、ときどきファイルに保存してください。</p><div class="acts" style="justify-content:flex-start"><button class="btn sub" id="saveFile">記録をファイルに保存</button><button class="btn sub" id="loadFile">ファイルから読み込む</button><input type="file" id="loadIn" accept="application/json,.json" hidden></div></div>
+      <div class="muted">施設データ: Wikidata（CC0）ほか、出典は施設ごとに記載。地図: 地球地図日本（国土地理院）を加工。座標: 国土地理院 住所検索・Wikidata。</div>
+    </div>
+  </section>
+
+  <div class="sheet" id="detail" role="dialog" aria-modal="true" aria-label="施設詳細"></div>
+  <div class="viewer" id="viewer"><img alt="写真"></div>
+
+  <nav class="tabs" aria-label="メイン">
+    <button data-tab="map"><svg class="i"><use href="#i-map"/></svg>マップ</button>
+    <button data-tab="list"><svg class="i"><use href="#i-list"/></svg>一覧</button>
+    <button data-tab="log"><svg class="i"><use href="#i-book"/></svg>記録</button>
+    <button data-tab="me"><svg class="i"><use href="#i-user"/></svg>マイページ</button>
+  </nav>
+
+  <dialog id="dlgVisit"><form class="in" id="visitForm">
+    <h2 id="vTitle">訪問を記録</h2>
+    <label class="f">訪問日<input type="date" name="date" required></label>
+    <div style="display:grid;gap:6px"><span class="muted">評価</span><div class="rate" id="rateIn"></div></div>
+    <label class="f">感想<textarea name="memo" placeholder="印象に残った生きもの、展示など"></textarea></label>
+    <div style="display:grid;gap:6px"><span class="muted">写真（3枚まで）</span><div class="thumbs" id="thumbs"></div><input type="file" id="photoIn" accept="image/*" multiple hidden></div>
+    <div class="acts"><button type="button" class="btn ghost" id="vDelete" hidden>削除</button><button type="button" class="btn sub" id="vCancel">キャンセル</button><button class="btn" id="vSave">保存</button></div>
+  </form></dialog>
+
+  <dialog id="dlgEdit"><form class="in" id="editForm">
+    <h2 id="editTitle">施設情報を編集</h2>
+    <label class="f">施設名<input name="name" required></label>
+    <div class="grid2"><label class="f">都道府県<select name="prefecture" id="ePref" required></select></label><label class="f">分類<select name="category" id="eCat"></select></label></div>
+    <label class="f">住所<input name="address"></label>
+    <div class="grid2"><label class="f">緯度<input name="lat" inputmode="decimal" placeholder="不明なら空欄"></label><label class="f">経度<input name="lng" inputmode="decimal" placeholder="不明なら空欄"></label></div>
+    <label class="f">公式サイトURL<input name="official_url" type="url" placeholder="https://"></label>
+    <div class="grid2"><label class="f">営業状況<select name="status" id="eStatus"></select></label><label class="f">閉館日<input name="closed_date" type="date"></label></div>
+    <label class="f">メモ<input name="notes"></label>
+    <p class="note warn" id="editWarn" hidden></p>
+    <div class="acts"><button type="button" class="btn sub" id="editCancel">キャンセル</button><button class="btn">保存</button></div>
+  </form></dialog>
+
+  <dialog id="dlgConfirm"><div class="in"><h3 id="cfText"></h3><div class="acts"><button class="btn sub" id="cfNo">やめる</button><button class="btn" id="cfOk" style="background:#d9584c">削除する</button></div></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>(s||'').normalize('NFKC').replace(/[\s・　（）()]/g,'');
+const ico=(n,st='')=>`<svg class="i" style="${st}"><use href="#i-${n}"/></svg>`;
+const PREFS=["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"];
+let BASE=[],META={},geo=null,store=null,sel=null,detailId=null,editing=null,vEdit=null,vRating=0,vPhotos=[];
+const S={edits:{},visits:{},favorites:{},photos:{}};
+const ui={tab:'map',visit:'',fav:false};
+
+// 保存（クラウド db／無ければこの端末）。既存の visits・edits はそのまま使う
+const local={get(k){try{return JSON.parse(localStorage.getItem('aqmap-'+k)||'{}')}catch(e){return{}}},set(k,v){try{localStorage.setItem('aqmap-'+k,JSON.stringify(v));return true}catch(e){return false}}};
+async function save(coll,id,data){
+  if(store){try{const r=store.collection(coll).doc(id);await (data?r.set(data):r.delete());return true}catch(e){toast('保存できませんでした（'+(e&&e.code||'error')+'）');return false}}
+  const all=local.get(coll);if(data)all[id]=data;else delete all[id];
+  if(!local.set(coll,all)){toast('この端末の保存容量が不足しています');return false}S[coll]=all;return true;
+}
+function listen(coll){store.collection(coll).onSnapshot(s=>{const o={};s.docs.forEach(d=>o[d.id]=d.data());S[coll]=o;refresh()},e=>toast('データを読み込めません（'+e.code+'）'))}
+
+function facilities(){const m=new Map(BASE.map(f=>[f.id,f]));for(const[id,e]of Object.entries(S.edits))m.set(id,{...(m.get(id)||{id,aliases:[],sources:[]}),...e,id});return[...m.values()]}
+const fac=id=>facilities().find(f=>f.id===id);
+const visitsOf=id=>Object.entries(S.visits).filter(([,v])=>v.facility_id===id).map(([k,v])=>({key:k,...v})).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+const allVisits=()=>Object.entries(S.visits).map(([k,v])=>({key:k,...v})).sort((a,b)=>(b.date||'').localeCompare(a.date||'')||(b.created_at||'').localeCompare(a.created_at||''));
+const photosOf=key=>Object.entries(S.photos).filter(([,p])=>p.visit_key===key).map(([k,p])=>({id:k,...p})).sort((a,b)=>(a.created_at||'').localeCompare(b.created_at||''));
+const isFav=id=>!!S.favorites[id],visited=id=>visitsOf(id).length>0;
+const L=()=>META.rules||{},catL=c=>(L().category_labels||{})[c]||c||'未分類',stL=s=>(L().status_labels||{})[s]||s;
+const stars=n=>n?'★'.repeat(n)+'<span style="opacity:.25">'+'★'.repeat(5-n)+'</span>':'';
+const fmtDate=d=>d?d.replace(/^(\d+)-0?(\d+)-0?(\d+)$/,'$1年$2月$3日'):'';
+const statusChip=f=>f.status==='closed'?'<span class="chip gray">閉館</span>':f.status==='temporarily_closed'?'<span class="chip warn">休館中</span>':'';
+
+// タブ
+function go(tab){ui.tab=tab;$$('.screen').forEach(s=>s.classList.toggle('on',s.id==='s-'+tab));$$('nav.tabs button').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===tab?'page':'false'));
+  if(location.hash!=='#'+tab)history.replaceState(null,'','#'+tab);closeDetail();if(tab==='map')requestAnimationFrame(drawMap);refresh()}
+$$('nav.tabs button').forEach(b=>b.onclick=()=>go(b.dataset.tab));
+addEventListener('hashchange',()=>{const t=location.hash.slice(1);if(['map','list','log','me'].includes(t)&&t!==ui.tab)go(t)});
+
+// マップ
+const svg=d3.select('#map'),g=svg.append('g'),landG=g.append('g'),ptG=g.append('g');
+const proj=d3.geoMercator(),path=d3.geoPath(proj);let k=1,fitted=false;
+const zoom=d3.zoom().scaleExtent([1,60]).on('zoom',e=>{k=e.transform.k;g.attr('transform',e.transform);styleDots()});
+svg.call(zoom).on('click',e=>{if(e.target.tagName!=='circle'){sel=null;drawPins();peek()}});
+$('#zin').onclick=()=>svg.transition().call(zoom.scaleBy,1.7);$('#zout').onclick=()=>svg.transition().call(zoom.scaleBy,1/1.7);$('#zfit').onclick=()=>fitPins(true);
+function drawMap(){
+  const el=$('#map'),W=el.clientWidth,H=el.clientHeight;if(!geo||!W||!H)return;
+  proj.fitExtent([[16,90],[W-16,H-90]],geo);
+  landG.selectAll('path').data(geo.features).join('path').attr('d',path).attr('fill','var(--land)').attr('stroke','var(--edge)');
+  drawPins();if(!fitted){fitted=true;fitPins(false)}else styleDots();
+}
+function fitPins(anim){
+  const el=$('#map'),W=el.clientWidth,H=el.clientHeight,pts=facilities().filter(f=>f.lat!=null).map(f=>proj([f.lng,f.lat]));if(!pts.length)return;
+  const [x0,x1]=d3.extent(pts,p=>p[0]),[y0,y1]=d3.extent(pts,p=>p[1]);
+  const s=Math.min(60,Math.max(1,.8/Math.max((x1-x0)/W,(y1-y0)/(H-200),.02)));
+  const t=d3.zoomIdentity.translate(W/2-s*(x0+x1)/2,H/2-s*(y0+y1)/2).scale(s);(anim?svg.transition().duration(500):svg).call(zoom.transform,t);
+}
+function showOnMap(id){
+  const f=fac(id);if(!f||f.lat==null)return toast('この施設は地図の位置が未登録です');
+  sel=id;go('map');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{const el=$('#map'),W=el.clientWidth,H=el.clientHeight,[x,y]=proj([f.lng,f.lat]),s=Math.max(k,14);
+    svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2-s*x,H*.42-s*y).scale(s));drawPins();peek()}));
+}
+function styleDots(){landG.selectAll('path').attr('stroke-width',.7/k);ptG.selectAll('circle').attr('r',d=>(d.id===sel?10:7)/k).attr('stroke-width',2/k)}
+function drawPins(){
+  if(!geo)return;
+  ptG.selectAll('circle').data(facilities().filter(f=>f.lat!=null),d=>d.id).join('circle')
+    .attr('cx',d=>proj([d.lng,d.lat])[0]).attr('cy',d=>proj([d.lng,d.lat])[1])
+    .attr('fill',d=>d.status==='closed'?'#c5cfd2':visited(d.id)?'var(--aqua)':'#fff')
+    .attr('stroke',d=>d.status==='closed'?'#97a5a9':d.id===sel?'var(--ink)':'var(--aqua)').style('cursor','pointer')
+    .on('click',(e,d)=>{e.stopPropagation();sel=d.id;drawPins();peek()}).sort((a,b)=>(a.id===sel)-(b.id===sel));
+  styleDots();
+}
+function peek(){
+  const f=sel&&fac(sel),p=$('#peek');$('#legend').style.visibility=f?'hidden':'visible';
+  if(!f){p.classList.remove('on');return}
+  const n=visitsOf(f.id).length;
+  p.innerHTML=`<div class="mark ${f.status==='closed'?'c':n?'v':''}">${ico(n?'check':'fish')}</div><div class="t"><h3>${esc(f.name)}</h3><span class="muted">${esc(f.prefecture)}・${n?`訪問 ${n}回`:'未訪問'}</span> ${statusChip(f)}</div><span class="icon-btn" aria-hidden="true" style="box-shadow:none;background:var(--aqua-l);color:var(--aqua-d)">${ico('chev')}</span>`;
+  p.setAttribute('aria-label',f.name+'の詳細を見る');p.classList.add('on');
+}
+$('#peek').onclick=()=>sel&&openDetail(sel);$('#peek').onkeydown=e=>{if(e.key==='Enter'&&sel)openDetail(sel)};
+new ResizeObserver(()=>{if(ui.tab==='map')drawMap()}).observe($('#mapbox'));
+
+// 一覧
+function filtered(){
+  const q=norm($('#q').value),p=$('#fPref').value;
+  return facilities().filter(f=>(!q||norm(f.name+f.address+(f.aliases||[]).join('')).includes(q))&&(!p||f.prefecture===p)
+    &&(!ui.visit||(ui.visit==='v')===visited(f.id))&&(!ui.fav||isFav(f.id)))
+    .sort((a,b)=>PREFS.indexOf(a.prefecture)-PREFS.indexOf(b.prefecture)||a.id.localeCompare(b.id));
+}
+function renderList(){
+  const fl=filtered();$('#listCount').textContent=`${fl.length}件`;
+  $('#list').innerHTML=fl.length?fl.map(f=>{const n=visitsOf(f.id).length;return `<div class="card item"><button class="main" data-id="${esc(f.id)}"><div class="mark ${f.status==='closed'?'c':n?'v':''}">${ico(n?'check':'fish')}</div><div class="t"><strong>${esc(f.name)}</strong><span class="muted">${esc(f.prefecture)}・${esc(catL(f.category))}</span> ${statusChip(f)}</div>${isFav(f.id)?`<span class="heart on">${ico('heart','width:18px;height:18px')}</span>`:''}</button><button class="pinbtn" data-map="${esc(f.id)}" ${f.lat==null?'disabled aria-label="地図の位置は未登録"':`aria-label="${esc(f.name)}を地図で見る"`}>${ico('pin')}</button></div>`}).join('')
+    :'<div class="empty">条件に合う施設はありません</div>';
+}
+$('#list').addEventListener('click',e=>{const m=e.target.closest('[data-map]');if(m){if(!m.disabled)showOnMap(m.dataset.map);return}const b=e.target.closest('.main');if(b)openDetail(b.dataset.id)});
+$('#q').addEventListener('input',renderList);$('#fPref').addEventListener('change',renderList);
+$$('.seg button').forEach(b=>b.onclick=()=>{ui.visit=b.dataset.v;$$('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));renderList()});
+$('#fFav').onclick=()=>{ui.fav=!ui.fav;$('#fFav').setAttribute('aria-pressed',ui.fav);renderList()};
+
+// 訪問記録（アルバム）
+function renderLog(){
+  const vs=allVisits(),n=new Set(vs.map(v=>v.facility_id)).size;
+  $('#logSub').textContent=vs.length?`${n}施設・${vs.length}回の訪問`:'';
+  $('#log').innerHTML=vs.length?vs.map(v=>{const f=fac(v.facility_id),ph=photosOf(v.key)[0];return `<button class="card entry" data-id="${esc(v.facility_id)}">
+    <div class="ph">${ph?`<img src="${ph.data}" alt="" loading="lazy">`:ico('fish','width:34px;height:34px;opacity:.5')}</div>
+    <div class="b"><div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><h3>${esc(f?.name||v.facility_name)}</h3><span class="stars">${stars(v.rating)}</span></div>
+    <span class="muted">${fmtDate(v.date)}${f?'・'+esc(f.prefecture):''}</span>${v.memo?`<p>${esc(v.memo)}</p>`:''}</div></button>`}).join('')
+    :`<div class="empty">${ico('book','width:40px;height:40px;opacity:.5')}<p>まだ訪問記録がありません。<br>施設の詳細画面から記録できます。</p></div>`;
+}
+$('#log').addEventListener('click',e=>{const b=e.target.closest('.entry');if(b)openDetail(b.dataset.id)});
+
+// マイページ
+function renderMe(){
+  const all=facilities(),vis=all.filter(f=>visited(f.id)).length,pct=all.length?Math.round(vis/all.length*100):0,favN=all.filter(f=>isFav(f.id)).length;
+  $('#rate').textContent=pct+'%';$('#rateSub').textContent=`登録${all.length}施設中 ${vis}施設`;$('#kVisited').textContent=vis;$('#kFav').textContent=favN;
+  const C=2*Math.PI*46;$('#ring').innerHTML=`<circle cx="54" cy="54" r="46" fill="none" stroke="var(--aqua-l)" stroke-width="10"/><circle cx="54" cy="54" r="46" fill="none" stroke="var(--aqua)" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C*pct/100} ${C}" transform="rotate(-90 54 54)"/>`;
+  const by=PREFS.map(p=>{const fs=all.filter(f=>f.prefecture===p);return{p,t:fs.length,v:fs.filter(f=>visited(f.id)).length}}).filter(x=>x.t);
+  $('#prefs').innerHTML=by.map(x=>`<div class="pref"><span>${x.p}</span><div class="bar"><i style="width:${x.v/x.t*100}%"></i></div><span class="muted" style="white-space:nowrap">${x.v} / ${x.t}</span></div>`).join('')+'<div class="pref muted" style="display:block;font-size:12px">登録施設がある都道府県のみ表示しています</div>';
+  $('#metaLine').textContent=`${META.dataset||''}（${META.generated_at||''}作成）。出典: ${Object.values(META.sources||{}).map(s=>s.name).join('、')} ほか各施設・自治体・観光公式サイト。`;
+}
+
+// 施設詳細
+function openDetail(id){detailId=id;renderDetail();$('#detail').classList.add('on');$('#detail').scrollTop=0}
+function closeDetail(){detailId=null;$('#detail').classList.remove('on')}
+function renderDetail(){
+  const f=detailId&&fac(detailId);if(!f)return;const vs=visitsOf(f.id),closed=f.status==='closed',last=vs[0];
+  const src=(f.sources||[]).map(s=>{const u=s.url||META.sources?.[s.ref]?.url;if(!u)return'';let h=u;try{h=s.ref?META.sources[s.ref].name:new URL(u).hostname}catch(e){}return `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(h)}</a>`}).join('<br>');
+  $('#detail').innerHTML=`<div class="bar-top"><button class="icon-btn" id="dBack" aria-label="戻る">${ico('back')}</button><button class="icon-btn heart ${isFav(f.id)?'on':''}" id="dFav" aria-label="お気に入り" aria-pressed="${isFav(f.id)}">${ico('heart')}</button></div>
+  <div class="dhead"><span class="chip">${esc(catL(f.category))}</span> ${statusChip(f)}<h2>${esc(f.name)}</h2><span class="muted">${esc(f.prefecture)}</span></div>
+  <div class="dbody">
+    <div class="card info">
+      <div><span class="k">訪問状況</span><span class="v">${vs.length?`<strong style="color:var(--aqua-d)">訪問済み</strong>（${vs.length}回）<br><span class="muted">最終訪問 ${fmtDate(last.date)}</span>${last.rating?` <span class="stars">${stars(last.rating)}</span>`:''}`:'未訪問'}</span></div>
+      <div><span class="k">所在地</span><span class="v">${esc(f.address)||'—'}${f.lat==null?'<br><span class="muted">地図の位置は未登録です</span>':`<br><button class="btn ghost" id="dMap" style="min-height:36px;padding:0;color:var(--aqua-d)">${ico('pin','width:16px;height:16px')}地図で見る</button>`}</span></div>
+      <div><span class="k">公式サイト</span><span class="v">${f.official_url?`<a href="${esc(f.official_url)}" target="_blank" rel="noopener">${esc(f.official_url.replace(/^https?:\/\//,'').replace(/\/$/,''))}</a>`:'—'}</span></div>
+      ${f.status_note?`<div><span class="k">お知らせ</span><span class="v">${esc(f.status_note)}</span></div>`:''}
+      ${f.closed_date?`<div><span class="k">閉館日</span><span class="v">${fmtDate(f.closed_date)}</span></div>`:''}
+    </div>
+    ${closed?'<p class="note">閉館した施設のため、新しい訪問は記録できません。これまでの記録はそのまま残ります。</p>':`<button class="btn" id="dAdd">${ico('pen','width:18px;height:18px')}訪問を記録する</button>`}
+    ${vs.length?`<div class="sec" style="margin:12px 0 0"><h3>訪問履歴</h3><span class="muted">${vs.length}件</span></div>`+vs.map(v=>{const ps=photosOf(v.key);return `<div class="card visit"><div class="row"><strong>${fmtDate(v.date)}</strong><button class="btn ghost" data-edit="${esc(v.key)}" style="min-height:36px;padding:0 6px">${ico('pen','width:16px;height:16px')}編集</button></div>
+      ${v.rating?`<div class="stars">${stars(v.rating)}</div>`:''}${v.memo?`<p style="margin:6px 0 0;font-size:14px">${esc(v.memo).replace(/\n/g,'<br>')}</p>`:''}
+      ${ps.length?`<div class="photos">${ps.map(p=>`<button data-photo="${esc(p.id)}" aria-label="写真を拡大"><img src="${p.data}" alt="訪問時の写真"></button>`).join('')}</div>`:''}</div>`}).join(''):''}
+    <details class="card info" style="padding:14px 18px"><summary class="muted" style="cursor:pointer">施設データの詳細・編集</summary>
+      <div><span class="k">分類</span><span class="v">${esc(catL(f.category))}</span></div>
+      <div><span class="k">確認状況</span><span class="v">${esc((L().verification_labels||{})[f.verification]||'—')}</span></div>
+      ${f.parent_facility?`<div><span class="k">所在施設</span><span class="v">${esc(f.parent_facility)}</span></div>`:''}
+      ${f.notes?`<div><span class="k">メモ</span><span class="v">${esc(f.notes)}</span></div>`:''}
+      <div><span class="k">座標</span><span class="v">${f.lat!=null?`${f.lat}, ${f.lng}`:'未登録'}${f.coord_note?`<br><span class="muted">${esc(f.coord_note)}</span>`:''}</span></div>
+      ${src?`<div><span class="k">出典</span><span class="v">${src}</span></div>`:''}<div><span class="k">ID</span><span class="v">${esc(f.id)}${S.edits[f.id]?'（編集あり）':''}</span></div>
+      <div style="border:0"><button class="btn sub" id="dEdit">${ico('pen','width:16px;height:16px')}施設情報を編集</button></div>
+    </details>
+  </div>`;
+  $('#dBack').onclick=closeDetail;const dm=$('#dMap');if(dm)dm.onclick=()=>showOnMap(f.id);$('#dEdit').onclick=()=>openEdit(f);
+  $('#dFav').onclick=async()=>{await save('favorites',f.id,isFav(f.id)?null:{facility_id:f.id,created_at:new Date().toISOString()});refresh()};
+  const a=$('#dAdd');if(a)a.onclick=()=>openVisit(f.id,null);
+  $$('#detail [data-edit]').forEach(b=>b.onclick=()=>openVisit(f.id,b.dataset.edit));
+  $$('#detail [data-photo]').forEach(b=>b.onclick=()=>{$('#viewer img').src=S.photos[b.dataset.photo].data;$('#viewer').classList.add('on')});
+}
+$('#viewer').onclick=()=>$('#viewer').classList.remove('on');
+
+// 訪問の記録・編集（日付・評価・感想・写真）
+function drawRate(){$('#rateIn').innerHTML=[1,2,3,4,5].map(n=>`<button type="button" data-n="${n}" class="${n<=vRating?'on':''}" aria-label="${n}つ星">★</button>`).join('')}
+$('#rateIn').onclick=e=>{const b=e.target.closest('button');if(b){vRating=+b.dataset.n===vRating?0:+b.dataset.n;drawRate()}};
+function drawThumbs(){const live=vPhotos.filter(p=>!p.del);
+  $('#thumbs').innerHTML=live.map(p=>`<div class="thumb"><img src="${p.data}" alt=""><button type="button" data-i="${vPhotos.indexOf(p)}" aria-label="写真を外す">×</button></div>`).join('')+(live.length<3?`<button type="button" class="addph" id="addPh" aria-label="写真を追加">${ico('camera')}</button>`:'');
+  const ap=$('#addPh');if(ap)ap.onclick=()=>$('#photoIn').click();
+  $$('#thumbs .thumb button').forEach(b=>b.onclick=()=>{const i=+b.dataset.i,p=vPhotos[i];if(p.id)p.del=true;else vPhotos.splice(i,1);drawThumbs()})}
+function shrink(file){return new Promise((res,rej)=>{const img=new Image();img.onload=()=>{let q=.8,max=1100,out;const c=document.createElement('canvas');
+  for(let i=0;i<6;i++){const s=Math.min(1,max/Math.max(img.width,img.height));c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);out=c.toDataURL('image/jpeg',q);if(out.length<220000)break;q-=.1;max*=.85}
+  URL.revokeObjectURL(img.src);res(out)};img.onerror=rej;img.src=URL.createObjectURL(file)})}
+$('#photoIn').onchange=async e=>{for(const f of [...e.target.files]){if(vPhotos.filter(p=>!p.del).length>=3)break;try{vPhotos.push({data:await shrink(f)})}catch(err){toast('写真を読み込めませんでした')}}e.target.value='';drawThumbs()};
+function openVisit(fid,key){
+  const v=key?S.visits[key]:null;vEdit={fid,key};vRating=v?.rating||0;vPhotos=key?photosOf(key).map(p=>({id:p.id,data:p.data})):[];
+  $('#vTitle').textContent=key?'訪問記録を編集':'訪問を記録';const fm=$('#visitForm');fm.date.value=v?.date||new Date().toISOString().slice(0,10);fm.memo.value=v?.memo||'';
+  $('#vDelete').hidden=!key;drawRate();drawThumbs();$('#dlgVisit').showModal();
+}
+$('#vCancel').onclick=()=>$('#dlgVisit').close();
+$('#visitForm').onsubmit=async e=>{
+  e.preventDefault();const {fid,key}=vEdit,f=fac(fid),fm=e.target;
+  if(!key&&f.status==='closed')return toast('閉館施設には新しい記録を追加できません');
+  const k2=key||'v'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),prev=key?S.visits[key]:{};
+  const rec={...prev,facility_id:fid,facility_name:prev.facility_name||f.name,date:fm.date.value,memo:fm.memo.value.trim(),rating:vRating||null,created_at:prev.created_at||new Date().toISOString(),...(key?{updated_at:new Date().toISOString()}:{})};
+  $('#vSave').disabled=true;
+  if(await save('visits',k2,rec)){
+    for(const p of vPhotos){if(p.del)await save('photos',p.id,null);else if(!p.id)await save('photos','p'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),{visit_key:k2,facility_id:fid,data:p.data,created_at:new Date().toISOString()})}
+    $('#dlgVisit').close();toast(key?'記録を更新しました':'訪問を記録しました');refresh();
+  }
+  $('#vSave').disabled=false;
+};
+$('#vDelete').onclick=()=>{const {key}=vEdit;$('#cfText').textContent='この訪問記録と写真を削除しますか？元に戻せません。';$('#dlgConfirm').showModal();
+  $('#cfOk').onclick=async()=>{$('#dlgConfirm').close();if(await save('visits',key,null)){for(const p of photosOf(key))await save('photos',p.id,null);$('#dlgVisit').close();refresh()}}};
+$('#cfNo').onclick=()=>$('#dlgConfirm').close();
+
+// 施設の追加・編集（重複チェック・閉館処理は従来どおり）
+function openEdit(f){
+  editing=f?f.id:null;$('#editTitle').textContent=f?'施設情報を編集':'施設を追加';const fm=$('#editForm');fm.reset();$('#editWarn').hidden=true;delete fm.dataset.ok;delete fm.dataset.dup;
+  const v=f||{prefecture:'東京都',category:'general_aquarium',status:'operating'};
+  for(const n of['name','prefecture','category','address','lat','lng','official_url','status','closed_date','notes'])fm.elements[n].value=v[n]??'';
+  $('#dlgEdit').showModal();
+}
+$('#addBtn').onclick=()=>openEdit(null);$('#editCancel').onclick=()=>$('#dlgEdit').close();
+$('#editForm').addEventListener('submit',async e=>{
+  e.preventDefault();const fm=e.target,val=n=>fm.elements[n].value.trim()||null,warn=m=>{$('#editWarn').textContent=m;$('#editWarn').hidden=false};
+  const lat=val('lat')!=null?Number(val('lat')):null,lng=val('lng')!=null?Number(val('lng')):null;
+  if((lat==null)!==(lng==null)||(lat!=null&&!(lat>20&&lat<46&&lng>122&&lng<154)))return warn('緯度・経度は両方入力するか、両方空欄にしてください（日本国内の値）。');
+  const st=val('status');if(st==='closed'&&!val('closed_date')&&!fm.dataset.ok){fm.dataset.ok=1;return warn('閉館日が分かれば入力してください。不明ならもう一度「保存」で空欄のまま保存します。過去の訪問記録は残ります。')}
+  const dup=facilities().filter(x=>x.id!==editing).find(x=>[x.name,...(x.aliases||[])].some(n=>norm(n)===norm(val('name')))||(val('address')&&norm(x.address)===norm(val('address'))));
+  if(dup&&!fm.dataset.dup){fm.dataset.dup=1;return warn(`「${dup.name}」と同じ施設の可能性があります。別の施設なら、もう一度「保存」を押してください。`)}
+  const pref=val('prefecture'),code=String(PREFS.indexOf(pref)+1).padStart(2,'0'),id=editing||`aq-${code}-u${Date.now().toString(36)}`,prev=fac(id)||{};
+  const same=prev.lat===lat&&prev.lng===lng;
+  const rec={name:val('name'),prefecture:pref,prefecture_code:code,category:val('category'),address:val('address'),lat,lng,
+    coord_source:lat!=null?(same?prev.coord_source??'manual':'manual'):null,coord_note:lat!=null?(same?prev.coord_note??null:'アプリで手入力'):'未登録（後で補完）',
+    official_url:val('official_url'),status:st,closed_date:st==='closed'?val('closed_date'):null,notes:val('notes'),edited_at:new Date().toISOString(),is_user_added:!BASE.some(b=>b.id===id)};
+  if(await save('edits',id,rec)){$('#dlgEdit').close();toast('保存しました');refresh();if(!editing)openDetail(id)}
+});
+
+async function copy(t,m){try{await navigator.clipboard.writeText(t);toast(m)}catch(e){toast('コピーできませんでした')}}
+$('#copyData').onclick=()=>copy(JSON.stringify({meta:{...META,total:facilities().length},facilities:facilities()},null,2),'施設データをコピーしました');
+$('#copyVisits').onclick=()=>copy(JSON.stringify({visits:S.visits,favorites:S.favorites},null,2),'訪問記録をコピーしました（写真は含みません）');
+// 記録のファイル保存・読み込み（クラウド保存が無い環境用。読み込みは追加のみで、既存の記録は上書き・削除しない）
+$('#saveFile').onclick=()=>{try{const blob=new Blob([JSON.stringify({app:'aquarium-visit-map',format:1,exported_at:new Date().toISOString(),...S},null,1)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`aquarium-records-${new Date().toISOString().slice(0,10)}.json`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}catch(e){toast('保存できませんでした')}};
+$('#loadFile').onclick=()=>$('#loadIn').click();
+$('#loadIn').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
+  try{const d=JSON.parse(await f.text());if(d.app!=='aquarium-visit-map')throw 0;let n=0;
+    for(const c of Object.keys(S))for(const[id,v]of Object.entries(d[c]||{}))if(!S[c][id]&&v&&typeof v==='object'){if(await save(c,id,v))n++}
+    toast(`${n}件の記録を追加しました`);refresh()}catch(err){toast('このファイルは読み込めません')}};
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2600)}
+
+function refresh(){
+  const all=facilities(),vis=all.filter(f=>visited(f.id)).length;
+  $('#mapCount').innerHTML=`<b>${vis}</b>/ ${all.length} 訪問`;
+  if(ui.tab==='map'){drawPins();peek()}if(ui.tab==='list')renderList();if(ui.tab==='log')renderLog();if(ui.tab==='me')renderMe();if(detailId)renderDetail();
+}
+
+Promise.all([fetch('data/facilities.json').then(r=>r.json()),fetch('data/japan-prefectures.topo.json').then(r=>r.json())]).then(([d,topo])=>{
+  BASE=d.facilities;META=d.meta;geo=topojson.feature(topo,topo.objects.prefectures);
+  const opt=o=>Object.entries(o||{}).map(([k,v])=>`<option value="${esc(k)}">${esc(v)}</option>`).join('');
+  const used=PREFS.filter(p=>BASE.some(f=>f.prefecture===p));
+  $('#fPref').insertAdjacentHTML('beforeend',used.map(p=>`<option>${p}</option>`).join(''));$('#ePref').innerHTML=PREFS.map(p=>`<option>${p}</option>`).join('');
+  $('#eCat').innerHTML=opt(L().category_labels);$('#eStatus').innerHTML=opt(L().status_labels);
+  if(!store)for(const c of Object.keys(S))S[c]=local.get(c);
+  const t=location.hash.slice(1);go(['map','list','log','me'].includes(t)?t:'map');
+}).catch(()=>toast('施設データを読み込めませんでした'));
+
+const localOnly=()=>{$('#storeLine').textContent='保存先: この端末のブラウザ';$('#backupRow').hidden=false};
+const wait=setTimeout(()=>{if(!store)localOnly()},10000);
+async function connect(){
+  const db=await window.claude.use('db');clearTimeout(wait);
+  if(!db){localOnly();return}
+  for(const coll of Object.keys(S)){const loc=local.get(coll);for(const[id,v]of Object.entries(loc)){try{const cur=await db.collection(coll).doc(id).get();if(!cur.exists)await db.collection(coll).doc(id).set(v)}catch(e){}}}
+  store=db;$('#storeLine').textContent='保存先: クラウド（どの端末からでも同じ記録を見られます）';$('#backupRow').hidden=true;
+  for(const coll of Object.keys(S))listen(coll);
+}
+let tries=0;(function hook(){if(window.claude&&window.claude.use)connect().catch(()=>{});else{if(++tries===6)localOnly();if(tries<20)setTimeout(hook,500)}})();
+}
+</script>
+</body>
+</html>
