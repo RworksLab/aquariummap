@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#2a9fb3">
-<meta name="app-version" content="2026112104">
+<meta name="app-version" content="2026112107">
 <meta name="apple-mobile-web-app-title" content="水族館マップ">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
 :root{color-scheme:light dark;
 --bg:light-dark(#f2f9fa,#0b1a1e);--card:light-dark(#ffffff,#12262b);--ink:light-dark(#173a42,#e3f1f3);--mute:light-dark(#6b8a90,#93b0b5);
 --aqua:light-dark(#2a9fb3,#5cc4d4);--aqua-d:light-dark(#1b7f90,#8fd9e4);--aqua-l:light-dark(#dff2f5,#173a41);--line:light-dark(#e1eef0,#1f3b42);
---sea:light-dark(#d6eff3,#0f2d34);--land:light-dark(#ffffff,#1a363c);--edge:light-dark(#c4e0e5,#2c5058);--fav:#f0766a;--star:#f2b84b;
+--sea:light-dark(#d6eff3,#0f2d34);--land:light-dark(#ffffff,#1a363c);--land-v:light-dark(#7fcbd7,#2a7482);--edge:light-dark(#c4e0e5,#2c5058);--fav:#f0766a;--star:#f2b84b;
 --shadow:0 6px 24px light-dark(rgb(23 58 66/.08),rgb(0 0 0/.35));--r:18px;--nav:68px}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0;-webkit-tap-highlight-color:transparent}
@@ -99,7 +99,10 @@ label.f{display:grid;gap:6px;font-size:13px;color:var(--mute)}
 .hero b{font-size:34px;font-family:"Zen Maru Gothic";color:var(--aqua-d);line-height:1}
 .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 24px}
 .kpi{padding:16px}.kpi b{display:block;font-size:24px;font-family:"Zen Maru Gothic"}
-.prefs{padding:6px 18px}.pref{display:grid;grid-template-columns:4.5em minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.pref-fold{margin-top:14px;overflow:hidden}.pref-fold summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 18px;cursor:pointer;min-height:56px}
+.pref-fold summary::-webkit-details-marker{display:none}.pref-fold summary b{font-size:16px;margin-right:10px}.pref-fold summary small{font-size:13px}
+.pref-fold .chev{width:20px;height:20px;color:var(--mute);transition:transform .2s}.pref-fold[open] .chev{transform:rotate(90deg)}.pref-fold[open] summary{border-bottom:1px solid var(--line)}
+.prefs{padding:0 18px 6px}.pref{display:grid;grid-template-columns:4.5em minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
 .pref:last-child{border:0}.bar{height:8px;border-radius:99px;background:var(--aqua-l);overflow:hidden}.bar i{display:block;height:100%;background:var(--aqua);border-radius:99px}
 .sec{margin:26px 0 10px;display:flex;justify-content:space-between;align-items:baseline}
 .set{padding:4px 18px}.set>div{padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}.set>div:last-child{border:0}
@@ -125,7 +128,11 @@ label.f{display:grid;gap:6px;font-size:13px;color:var(--mute)}
 .note.warn{background:light-dark(#fff3dc,#3a2d12);color:light-dark(#8a5a00,#ffcf7a)}
 dialog{border:0;padding:0;background:transparent;max-width:430px;width:100%;margin:auto auto 0;max-height:92dvh}
 dialog::backdrop{background:rgb(10 40 48/.35)}
-dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom));max-height:92dvh;overflow:auto;display:grid;gap:14px}
+dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom));max-height:92dvh;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+/* 入力画面は上下のスクロールだけにする（日付欄などが横にはみ出さないように） */
+dialog .in *{min-width:0;max-width:100%}
+dialog .in input[type=date]{appearance:none;-webkit-appearance:none;display:block}
+dialog .in input::-webkit-date-and-time-value{text-align:left}
 .grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
 /* 個性チャート：左右の特徴にはさまれた横長のインジケーター */
 .pc{padding:16px 18px 6px}.pc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
@@ -186,7 +193,7 @@ dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px ca
     <div class="top"><h1>水族館訪問マップ</h1><span class="count" id="mapCount"></span></div>
     <div class="mapbox" id="mapbox"><svg class="m" id="map" role="img" aria-label="水族館の位置を示す日本地図"></svg></div>
     <div class="mapctl"><button class="icon-btn" id="zin" aria-label="拡大"><svg class="i"><use href="#i-plus"/></svg></button><button class="icon-btn" id="zout" aria-label="縮小"><svg class="i"><use href="#i-minus"/></svg></button><button class="icon-btn" id="zfit" aria-label="全体を表示"><svg class="i"><use href="#i-full"/></svg></button></div>
-    <div class="legend" id="legend"><span><svg width="18" height="18" viewBox="0 0 30 30" aria-hidden="true" style="vertical-align:-5px;margin-right:4px"><use href="#stamp" width="30" height="30"/></svg>訪問済み</span><span><i style="background:#fff;border:1.5px solid var(--aqua)"></i>未訪問</span><span><i style="background:#c5cfd2"></i>閉館</span></div>
+    <div class="legend" id="legend"><span><svg width="18" height="18" viewBox="0 0 30 30" aria-hidden="true" style="vertical-align:-5px;margin-right:4px"><use href="#stamp" width="30" height="30"/></svg>訪問済み</span><span><i style="background:#fff;border:1.5px solid var(--aqua)"></i>未訪問</span><span><i style="background:#c5cfd2"></i>閉館</span><span><i style="background:var(--land-v);border-radius:3px"></i>訪問した県</span></div>
     <div class="peek card" id="peek" role="button" tabindex="0"></div>
   </section>
 
@@ -211,8 +218,8 @@ dialog .in{background:var(--bg);border-radius:24px 24px 0 0;padding:22px 20px ca
     <div class="top"><h1>マイページ</h1></div>
     <div class="card hero"><svg class="ring" id="ring" viewBox="0 0 108 108" aria-hidden="true"></svg><div><span class="muted">全国の訪問達成率</span><br><b id="rate"></b><br><span class="muted" id="rateSub"></span></div></div>
     <div class="kpis"><div class="card kpi"><span class="muted">訪問済み施設</span><b id="kVisited"></b></div><div class="card kpi"><span class="muted">お気に入り</span><b id="kFav"></b></div></div>
-    <div class="sec"><h3>都道府県別</h3><span class="muted">訪問 / 登録施設</span></div>
-    <div class="card prefs" id="prefs"></div>
+    <details class="card pref-fold"><summary><span><b>都道府県別</b><small class="muted" id="prefSum"></small></span><svg class="i chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+      <div class="prefs" id="prefs"></div></details>
     <div class="sec"><h3>データ</h3></div>
     <div class="card set">
       <div id="storeLine">保存先を確認中…</div>
@@ -349,8 +356,12 @@ function showOnMap(id){
 // ピンは画面上で一定の大きさになるよう 1/k で縮小。訪問済みはスタンプ、未訪問は白丸、閉館は灰色
 function styleDots(){landG.selectAll('path').attr('stroke-width',.7/k);
   ptG.selectAll('g.pin').attr('transform',d=>{const [x,y]=proj([d.lng,d.lat]);return `translate(${x},${y}) scale(${(d.id===sel?1.35:1)/k})`})}
+// 水族館に1か所でも訪問した都道府県に色をつける（閉館した施設の記録も含む）
+function paintPrefs(){const byId=new Map(facilities().map(f=>[f.id,f.prefecture]));
+  const done=new Set(Object.values(S.visits).map(v=>byId.get(v.facility_id)).filter(Boolean));
+  landG.selectAll('path').attr('fill',d=>done.has(d.properties.nam_ja)?'var(--land-v)':'var(--land)')}
 function drawPins(){
-  if(!geo)return;
+  if(!geo)return;paintPrefs();
   const kind=d=>d.status==='closed'?'closed':visited(d.id)?'stamp':'dot';
   const pins=ptG.selectAll('g.pin').data(facilities().filter(f=>f.lat!=null),d=>d.id).join('g').attr('class','pin').style('cursor','pointer')
     .on('click',(e,d)=>{e.stopPropagation();sel=d.id;drawPins();peek()});
@@ -407,7 +418,8 @@ function renderMe(){
   $('#rate').textContent=pct+'%';$('#rateSub').textContent=`登録${all.length}施設中 ${vis}施設`;$('#kVisited').textContent=vis;$('#kFav').textContent=favN;
   const C=2*Math.PI*46;$('#ring').innerHTML=`<circle cx="54" cy="54" r="46" fill="none" stroke="var(--aqua-l)" stroke-width="10"/><circle cx="54" cy="54" r="46" fill="none" stroke="var(--aqua)" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C*pct/100} ${C}" transform="rotate(-90 54 54)"/>`;
   const by=PREFS.map(p=>{const fs=all.filter(f=>f.prefecture===p);return{p,t:fs.length,v:fs.filter(f=>visited(f.id)).length}}).filter(x=>x.t);
-  $('#prefs').innerHTML=by.map(x=>`<div class="pref"><span>${x.p}</span><div class="bar"><i style="width:${x.v/x.t*100}%"></i></div><span class="muted" style="white-space:nowrap">${x.v} / ${x.t}</span></div>`).join('')+'<div class="pref muted" style="display:block;font-size:12px">登録施設がある都道府県のみ表示しています</div>';
+  $('#prefSum').textContent=`訪問した県 ${by.filter(x=>x.v).length} / ${by.length}`;
+  $('#prefs').innerHTML='<div class="pref muted" style="font-size:12px;padding:10px 0"><span></span><span></span><span>訪問 / 登録施設</span></div>'+by.map(x=>`<div class="pref"><span>${x.p}</span><div class="bar"><i style="width:${x.v/x.t*100}%"></i></div><span class="muted" style="white-space:nowrap">${x.v} / ${x.t}</span></div>`).join('')+'<div class="pref muted" style="display:block;font-size:12px">登録施設がある都道府県のみ表示しています</div>';
   $('#metaLine').textContent=`${META.dataset||''}（${META.generated_at||''}作成）。出典: ${Object.values(META.sources||{}).map(s=>s.name).join('、')} ほか各施設・自治体・観光公式サイト。`;
 }
 
